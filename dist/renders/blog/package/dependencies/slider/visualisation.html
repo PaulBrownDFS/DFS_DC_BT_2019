@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Slider</title>
+
+    <link rel="stylesheet"
+          href="https://paulbrowndfs.github.io/dc-accelerators/dist/renders/slider/slider.min.css"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        video::-webkit-media-controls{
+            position:static;
+        }
+
+        video::-webkit-media-controls-enclosure{
+            width:100%;
+            position:absolute;
+            left:0;
+            bottom:0;
+        }
+
+    </style>
+    <script src="https://paulbrowndfs.github.io/dc-accelerators/dist/reusable/poi.lib.min.js"></script>
+</head>
+<body>
+
+<div class="js_slider_wrap" data-locale="" data-maxslides="5" tyle="margin:0 auto;"></div>
+
+<!-- TODO REMOVE WHEN UPLOADED TO GITHUB -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- TODO REMOVE WHEN UPLOADED TO GITHUB -->
+
+<script src="https://paulbrowndfs.github.io/dc-accelerators/dist/reusable/cms-javascript-sdk.min.js"></script>
+<script src="https://paulbrowndfs.github.io/dc-accelerators/dist/reusable/handlebars.min.js"></script>
+<script src="https://paulbrowndfs.github.io/dc-accelerators/dist/reusable/utils.js"></script>
+
+<script src="https://paulbrowndfs.github.io/dc-accelerators/dist/reusable/handlebars_helpers.js"></script>
+
+<script src="https://paulbrowndfs.github.io/dc-accelerators/dist/renders/slider/template.lightSlider.min.js?v2g"></script>
+
+<!-- <script src="../template.lightSlider.min.js?v2g"></script> -->
+
+<script src="https://paulbrowndfs.github.io/dc-accelerators/dist/reusable/lightSlider.min.js"></script>
+
+
+<script>
+    function getQueryVar(params) {
+        var paramsObj = {};
+        var currentParam = null;
+
+        for (var x = 0; x < params.length; x++) {
+            currentParam = window.location.href.match(new RegExp(params[x] + "=([a-zA-Z0-9-\._]+)"));
+            if (currentParam && currentParam.length > 1){
+                paramsObj[params[x]] = currentParam[1];
+            }
+
+            else{
+                console.warn('Param: ' + x + ' not found');
+            }
+        }
+        var url = 'https://' + paramsObj.vse + '/cms/content/query?fullBodyObject=true&scope=tree&store=any&query=%7B"sys.iri":"http://content.cms.amplience.com/' + paramsObj.content + '"%7D&v=' + Date.now();
+        return url;
+    }
+
+    Handlebars.partials = AmpCa.templates;
+
+    AmpCa.utils = new AmpCa.Utils();
+
+    AmpCa.utils.getCaData({
+        url: getQueryVar(['vse', 'content']),
+        auth: {
+            baseUrl: 'https://c1.adis.ws',
+            id: 'd3314e39-8bcb-4c12-98ec-24e063873399', //'653d3a56-c433-4d94-a585-894c42418082'
+            store: 'dfs'
+        },
+        callback: function (data) {
+
+          //Data Tranforms
+
+          data[0].showMobile =  true;
+          data[0].showDesktop =  true;
+
+          var wrapper = document.querySelectorAll(".js_slider_wrap")[0];
+          var maxSlides = wrapper.dataset.maxslides;
+          if( maxSlides < data[0].slides.length ) {
+            data[0].slides.length = maxSlides;
+          }
+
+          // get image widths from Slide 1 DI params
+
+          if(data[0].slides[0].imageAttributes) {
+              if(data[0].slides[0].imageAttributes.match(/w=[0-9]+/)){
+                var this_width = data[0].slides[0].imageAttributes.match(/w=[0-9]+/);
+                data[0].imageWidth = this_width[0].replace('w=', '');
+              } else {
+                  data[0].imageWidth = "1366";
+                }
+          } else {
+              data[0].imageWidth = "1366";
+            }
+
+          if(data[0].slides[0].imageAttributes24) {
+              if(data[0].slides[0].imageAttributes24.match(/w=[0-9]+/)){
+                var this_width = data[0].slides[0].imageAttributes24.match(/w=[0-9]+/);
+                data[0].imageWidth24 = this_width[0].replace('w=', '');
+              } else {
+                  data[0].imageWidth24 = "1024";
+                }
+          } else {
+              data[0].imageWidth24 = "1024";
+            }
+
+          if(data[0].slides[0].imageAttributesMob) {
+              if(data[0].slides[0].imageAttributesMob.match(/w=[0-9]+/)){
+                var this_width = data[0].slides[0].imageAttributesMob.match(/w=[0-9]+/);
+                data[0].imageWidthMob = this_width[0].replace('w=', '');
+              } else {
+                  data[0].imageWidthMob = "600";
+                }
+          } else {
+              data[0].imageWidthMob = "600";
+            }
+
+
+
+          // check for UK sliderVersion which is undefined
+          if(typeof data[0].sliderVersion === 'undefined') {
+            data[0].sliderVersion = '';
+          }
+
+          // roundels
+
+
+          for(var s=0; s < data[0].slides.length; s++) {
+
+            data[0].slides[s].imageVersion = data[0].sliderVersion;
+
+            // check for undefined roundel array and skip if undefined
+
+            if(typeof data[0].slides[s].roundel === 'undefined') {
+              // skip this slide
+              continue;
+            }
+
+            if(data[0].slides[s].roundel.length) {
+              for(var i = 0; i < data[0].slides[s].roundel.length; i++) {
+
+                  if(data[0].slides[s].roundel[i].roundelAnchor) {
+                    data[0].slides[s].roundel[i].roundelAnchor = data[0].slides[s].roundel[i].roundelAnchor.split(' ');
+                  }
+                  if(data[0].slides[s].roundel[i].mobilePosition) {
+                    data[0].slides[s].roundel[i].mobilePosition = data[0].slides[s].roundel[i].mobilePosition.split(',');
+                  }
+                  if(data[0].slides[s].roundel[i].d1024Position) {
+                    data[0].slides[s].roundel[i].d1024Position = data[0].slides[s].roundel[i].d1024Position.split(',');
+                  }
+                  if(data[0].slides[s].roundel[i].d1366Position) {
+                    data[0].slides[s].roundel[i].d1366Position = data[0].slides[s].roundel[i].d1366Position.split(',');
+                  }
+
+                  switch(data[0].slides[s].imageVersion) {
+                    case "":
+                    data[0].slides[s].roundel[i].deviceList = data[0].slides[s].roundel[i].UKRoundel;
+                    break;
+                    case "ROI":
+                    data[0].slides[s].roundel[i].deviceList = data[0].slides[s].roundel[i].ROIRoundel;
+                    break;
+                    case "NL":
+                    data[0].slides[s].roundel[i].deviceList = data[0].slides[s].roundel[i].NLRoundel;
+                    break;
+                    case "ES":
+                    data[0].slides[s].roundel[i].deviceList = data[0].slides[s].roundel[i].ESRoundel;
+                    break;
+                  }
+
+              }
+            }
+
+          }
+
+
+
+          console.log('type \'sliderData\' to view global data in console');
+          sliderData = data[0];
+            var template = Handlebars.template(AmpCa.templates.lightSlider);
+            wrapper.innerHTML = template(data[0]);
+
+            $(document).ready(function() {
+
+              $("#content-slider").lightSlider({
+                        loop:true,
+                        auto:true,
+                        keyPress:true,
+                        item:1,
+                        speed:900,
+                        pause: 6000,
+                        easing: 'cubic-bezier(.09,.88,1,-0.19)',
+                        pauseOnHover:true
+              });
+
+            });
+
+
+
+        },
+        formatData: function (data) {
+            return amp.inlineContent(JSON.parse(data));
+        }
+    });
+
+    // var poi = new POI({
+    //     domain: 'http://i1.adis.ws',
+    //     account: 'dfs',
+    //     containerClass: 'amp-dc-slider-slide',
+    //     imgClass: 'amp-dc-image-pic',
+    //     images: [
+    //         {
+    //            name: "hoxton_fullcrop1",
+    //             hotspotCallbacks:[
+    //                 {
+    //                     target: "*",
+    //                     action: "click",
+    //                     callback: function(evt, settings){
+    //                         console.log('yay, i was clicked :)', settings);
+    //                     }
+    //                 }]
+    //         },
+    //       ]
+    // });
+    // poi.init();
+    // this will add Hotspots to the image above
+</script>
+<script>
+// new HBS Helper for string replace
+Handlebars.registerHelper('replace', function( string, to_replace, replacement ){
+  return ( string || '' ).replace( to_replace, replacement );
+});
+</script>
+</body>
+</html>

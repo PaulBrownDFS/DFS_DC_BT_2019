@@ -1,0 +1,6 @@
+{
+  "CONTENT_TYPE_BASEPATH": "https://paulbrowndfs.github.io/DFS/contentTypes_dfs",
+  "COMPANY_TAG": "dfs",
+  "VISUALIZATION_BASEPATH_REMOTE": "https://paulbrowndfs.github.io/DFS_DC_2019/dist",
+  "VISUALIZATION_BASEPATH": "http://127.0.0.1:9100/dist"
+}

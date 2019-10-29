@@ -1,3 +1,4 @@
+{{#with cardlistslot}}
 <section id="{{cardListCssId}}" class="CardList {{#if cardlisttype}}{{cardlisttype}}{{/if}}">
     {{#each cards}}
     <div class="card card{{math @index "+" 1}} color{{#if copycolour}}{{copycolour}}{{else}}000000{{/if}}">
@@ -61,3 +62,4 @@
 {{/each}}
 
 </style>
+{{/with}}

@@ -1,13 +1,63 @@
-<div class="amp-dc-card-list
-{{#iff cards.length '<' 6}}amp-dc-prod-{{cards.length}}-rows
-{{else}}amp-dc-prod-3-rows{{/iff}}
-{{#if heroList}}amp-dc-cards-hero{{/if}}
-">
-    <div class="amp-dc-card-title">
-        {{ header }}
-    </div>
+<section id="{{cardListCssId}}" class="CardList {{#if cardlisttype}}{{cardlisttype}}{{/if}}">
+    {{#each cards}}
+    <div class="card card{{math @index "+" 1}} color{{#if copycolour}}{{copycolour}}{{else}}000000{{/if}}">
+      {{#if link}}<a href="{{link}}">{{/if}}
+        <picture>
+          <!-- WebP -->
+            <source type="image/webp" media="(max-width: 1023px)" srcset ="//{{image.image.defaultHost}}/i/dfs/{{image.image.name}}{{#if image.seoText}}/{{image.seoText}}{{/if}}?w={{getWidth ../cardlisttype "M" }}&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp">
 
-    <div class="amp-dc-card-list-wrap">
-        {{#each cards}}{{templateChooser this @index}}{{/each}}
+            <source type="image/webp" media="(max-width: 1365px)" srcset ="//{{image.image.defaultHost}}/i/dfs/{{image.image.name}}{{#if image.seoText}}/{{image.seoText}}{{/if}}?w={{getWidth ../cardlisttype "D4" }}&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp">
+
+            <source type="image/webp" media="(min-width: 1366px)" srcset ="//{{image.image.defaultHost}}/i/dfs/{{image.image.name}}{{#if image.seoText}}/{{image.seoText}}{{/if}}?w={{getWidth ../cardlisttype "D6" }}&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp">
+
+
+
+            <!-- Jpeg -->
+            <source type="image/webp" media="(max-width: 1023px)" srcset ="//{{image.image.defaultHost}}/i/dfs/{{image.image.name}}{{#if image.seoText}}/{{image.seoText}}{{/if}}?w={{getWidth ../cardlisttype "M" }}">
+
+            <source media="(max-width: 1365px)" srcset ="//{{image.image.defaultHost}}/i/dfs/{{image.image.name}}{{#if image.seoText}}/{{image.seoText}}{{/if}}?w={{getWidth ../cardlisttype "D4" }}">
+
+            <source media="(min-width: 1366px)" srcset ="//{{image.image.defaultHost}}/i/dfs/{{image.image.name}}{{#if image.seoText}}/{{image.seoText}}{{/if}}?w={{getWidth ../cardlisttype "D6" }}">
+
+            <!-- FallBack Image -->
+
+             <img src="//{{image.image.defaultHost}}/i/dfs/{{image.image.name}}{{#if image.seoText}}/{{image.seoText}}{{/if}}?w={{getWidth ../cardlisttype "D6" }}" alt="{{image.imageAltText}}">
+        </picture>
+
+         <div class="cardlistCopy">
+           <h2 style="{{#if copycolour}}color:#{{copycolour}}{{else}}color:#000;{{/if}}">{{description}}</h2>
+         </div>
+         {{#if linkValue}}
+         <div class="cl_btn_wrapper">
+           <div class="cardlist_button">
+               <p style="{{#if copycolour}}color:#{{copycolour}};border: 2px solid #{{copycolour}}{{else}}color:#000;border: 2px solid #000{{/if}}">{{linkValue}}
+               </p>
+           </div>
+         </div>
+         {{/if}}
+      {{#if link}}</a>{{/if}}
     </div>
-</div>
+    {{/each}}
+    <div class="clearfix"></div>
+</section>
+
+<style>
+{{#each cards}}
+{{#if ../cardListCssId}}#{{../cardListCssId}}{{/if}}.CardList .card{{math @index "+" 1}} .cardlistCopy h2 {
+  font-size: {{#if copyFontSize}}{{copyFontSize}}{{else}}36{{/if}}px !important;
+}
+
+@media (max-width: 1365px) {
+  {{#if ../cardListCssId}}#{{../cardListCssId}}{{/if}}.CardList .card{{math @index "+" 1}} .cardlistCopy h2 {
+    font-size: {{#if copyFontSize}}{{math copyFontSize "-" 6}}{{else}}30{{/if}}px !important;
+  }
+}
+
+@media (max-width: 1023px) {
+  {{#if ../cardListCssId}}#{{../cardListCssId}}{{/if}}.CardList .card{{math @index "+" 1}} .cardlistCopy h2 {
+    font-size: {{#if copyFontSize}}{{math copyFontSize "-" 8}}{{else}}28{{/if}}px !important;
+  }
+}
+{{/each}}
+
+</style>

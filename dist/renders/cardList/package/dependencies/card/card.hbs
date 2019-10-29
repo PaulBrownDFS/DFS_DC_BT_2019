@@ -1,47 +1,21 @@
-<div class="amp-dc-card amp-dc-card-{{math addTemplateClassname '+' 1}}">
-    {{#if link}}
-        <a class="amp-dc-card-wrap" href="{{link.value}}"
-           {{#if textBackgroundColour}}style="background: #{{textBackgroundColour}};"{{/if}}
-        >
-    {{else}}
-        <div class="amp-dc-card-wrap">
-    {{/if}}
+    <div class="cardWrapper">
 
-    <div class="amp-dc-card-img-wrap">
-        {{templateChooser cardImage}}
-    </div>
-
-
-    <div class="amp-dc-card-text-wrap
-        {{#unless cardName}}
-            {{#unless description}}
-                {{#unless link}}
-                        amp-dc-hide
-                 {{/unless}}
-            {{/unless}}
-        {{/unless}}">
-
-        {{#if cardName}}
-            <div class="amp-dc-card-name">{{cardName}}</div>
-        {{/if}}
-        {{#if description}}
-            <p class="amp-dc-card-description">{{description}}</p>
-        {{/if}}
-        {{#if link}}
-            <div class="amp-dc-card-link">
-                {{#if link.label}}
-                    {{link.label}}
-                {{else}}
-
-                {{/if}}
+        <section id="{{cardName}}">
+            <div class="card card1 color{{copycolour}}">
+                <a href="{{link}}">
+                    <img src="https://{{image.image.defaultHost}}/i/dfs/{{image.image.name}}?w=295" alt="{{_title}}">
+                    <div class="cardlistCopy">
+                        <h2 style="color:#{{copycolour}}">{{description}}</h2>
+                    </div>
+                    <div class="cl_btn_wrapper">
+                        <div class="cardlist_button">
+                            <p style="color:#{{copycolour}};border: 2px solid #{{copycolour}}">{{linkValue}}</p>
+                        </div>
+                    </div>
+                </a>
             </div>
-        {{/if}}
-    </div>
+            <div class="clearfix"></div>
+        </section>
 
-{{#if link}}
-    </a>
-{{else}}
     </div>
-{{/if}}
-
-</div>
+    

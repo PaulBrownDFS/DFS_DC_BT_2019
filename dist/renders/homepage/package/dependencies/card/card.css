@@ -1,49 +1,52 @@
-.amp-dc-card {
-  width: 100%;
-  display: inline-block;
-  vertical-align: top;
-}
-
-.amp-dc-card * {
-  margin: 0;
-  padding: 0;
-}
-
-.amp-dc-card .amp-dc-hide {
-  display: none;
-}
-
-.amp-dc-card .amp-dc-card-text-wrap {
-  padding: 10px 0;
-  text-align: center;
-  background-color: #fff;
-}
-
-.amp-dc-card a.amp-dc-card-wrap {
-  display: block;
+.js_card_wrap a {
   text-decoration: none;
 }
 
-.amp-dc-card a.amp-dc-card-wrap:hover .amp-dc-card-link {
-  text-decoration: underline;
+.cardWrapper {
+  width: 295px;
+  margin: 30px auto;
+  position: relative;
 }
 
-.amp-dc-card .amp-dc-card-name {
-  font-size: 21px;
-  color: #000;
-  margin-bottom: 5px;
+.cardlistCopy {
+  position: absolute;
+  width: 100%;
+  bottom: 82px;
+  text-align: center;
 }
 
-.amp-dc-card .amp-dc-card-description {
-  font-size: 14px;
-  color: #8F8F8F;
+.card1 .cardlistCopy h2 {
+  font-size: 24px !important;
+}
+
+.cardlist_button {
+  width: 174px;
+  margin: 0 auto;
+}
+
+.cl_btn_wrapper {
+  position: absolute;
+  width: 100%;
+  bottom: 30px;
+}
+
+section.CardList .cl_btn_wrapper {
+  bottom: 30px;
+}
+
+section.CardList .cardlist_button {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.cardlist_button p {
+  font-size: 18px;
+  width: auto;
   display: inline-block;
-}
-
-.amp-dc-card .amp-dc-card-link {
-  margin-top: 7px;
-  color: #8F8F8F;
-  font-size: 16px;
-  font-weight: bold;
-  white-space: nowrap;
+  padding: 8px 25px;
+  text-align: center;
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  font-weight: 900;
+  margin: 0 auto;
 }

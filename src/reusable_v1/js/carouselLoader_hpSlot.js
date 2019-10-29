@@ -1,4 +1,5 @@
 // Carousel
+// original Filename: carouselLoader_hpSlot.min.js OCT 2019
 /* ========================================================================
  * Bootstrap: transition.js v3.3.7
  * http://getbootstrap.com/javascript/#transitions

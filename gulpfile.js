@@ -484,7 +484,8 @@ gulp.task(
         'renders-js-copy',
         'renders-files-copy',
         'renders-js-min',
-        'sass-production-files'
+        'sass-production-files',
+        'sass-production-files_clist'
     ],
     function () {
     }
@@ -584,8 +585,29 @@ gulp.task('sass-production-files', function () {
                 cascade: false
             })
         )
-       
 
         .pipe(gulp.dest('dist/renders/DFS_SLider/prod'))
+    );
+});
+
+gulp.task('sass-production-files_clist', function () {
+    return (
+        gulp
+            .src('src/renders/cardList/sass/prod/*.scss')
+            .pipe(
+                sass({
+                    outputStyle: 'compressed'
+                }).on('error', sass.logError)
+            )
+            .pipe(
+                autoprefixer({
+                    browsers: ['last 2 versions'],
+                    cascade: false
+                })
+            )
+            
+
+
+            .pipe(gulp.dest('dist/renders/cardList/prod'))
     );
 });

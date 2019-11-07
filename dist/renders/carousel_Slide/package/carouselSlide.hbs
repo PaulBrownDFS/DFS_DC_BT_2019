@@ -117,27 +117,27 @@
                 <!-- webp -->
 
                   <!-- 600 Mobile roundel 2-->
-                  <source type="image/webp" media="(max-width: 1023px)"  srcset="//images.dfs.co.uk/i/dfs/{{EspotImage2.name}}{{#if espot2hasownmobileimage}}_mobile{{/if}}?w=80%&qlt=100&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp" />
+                  <source type="image/webp" media="(max-width: 1023px)"  srcset="//images.dfs.co.uk/i/dfs/{{#if roi}}ROI_{{/if}}{{EspotImage2.name}}{{#if espot2hasownmobileimage}}_mobile{{/if}}?w=80%&qlt=100&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp" />
 
                   <!-- 1024 width roundel 2-->
-                  <source type="image/webp" media="(max-width: 1365px)" srcset="//images.dfs.co.uk/i/dfs/{{EspotImage2.name}}?w=80%&qlt=100&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp" />
+                  <source type="image/webp" media="(max-width: 1365px)" srcset="//images.dfs.co.uk/i/dfs/{{#if roi}}ROI_{{/if}}{{EspotImage2.name}}?w=80%&qlt=100&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp" />
 
                   <!-- 1366 width roundel 2-->
-                    <source type="image/webp" media="(min-width: 1366px)" srcset="//images.dfs.co.uk/i/dfs/{{EspotImage2.name}}?qlt=90&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp" />
+                    <source type="image/webp" media="(min-width: 1366px)" srcset="//images.dfs.co.uk/i/dfs/{{#if roi}}ROI_{{/if}}{{EspotImage2.name}}?qlt=90&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp" />
 
                 <!-- Jpg -->
 
                   <!-- 600 Mobile roundel 2-->
-                    <source type="image/webp" media="(max-width: 1023px)"  srcset="//images.dfs.co.uk/i/dfs/{{EspotImage2.name}}{{#if espot2hasownmobileimage}}_mobile{{/if}}?w=80%&qlt=100" />
+                    <source type="image/webp" media="(max-width: 1023px)"  srcset="//images.dfs.co.uk/i/dfs/{{#if roi}}ROI_{{/if}}{{EspotImage2.name}}{{#if espot2hasownmobileimage}}_mobile{{/if}}?w=80%&qlt=100" />
 
                   <!-- 1024 width roundel 2-->
 
-                    <source media="(max-width: 1365px)" srcset="//images.dfs.co.uk/i/dfs/{{EspotImage2.name}}?w=80%&qlt=100" />
+                    <source media="(max-width: 1365px)" srcset="//images.dfs.co.uk/i/dfs/{{#if roi}}ROI_{{/if}}{{EspotImage2.name}}?w=80%&qlt=100" />
 
                   <!-- 1366 width roundel 2-->
-                    <source media="(min-width: 1366px)" srcset="//images.dfs.co.uk/i/dfs/{{EspotImage2.name}}?qlt=90" />
+                    <source media="(min-width: 1366px)" srcset="//images.dfs.co.uk/i/dfs/{{#if roi}}ROI_{{/if}}{{EspotImage2.name}}?qlt=90" />
 
-                  <img src="//images.dfs.co.uk/i/dfs/{{EspotImage2.name}}?w=80%&qlt=100" alt ="{{EspotImage2.name}}"/>
+                  <img src="//images.dfs.co.uk/i/dfs/{{#if roi}}ROI_{{/if}}{{EspotImage2.name}}?w=80%&qlt=100" alt ="{{EspotImage2.name}}"/>
               </picture>
               {{#if espot2URL }}
                 </a>

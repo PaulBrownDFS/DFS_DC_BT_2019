@@ -1,3 +1,27 @@
+@font-face {
+  font-family: "HelveticaNeueW01-Thin";
+  src: url("https://paulbrowndfs.github.io/ca_assets/fonts/56be84de-9d60-4089-8df0-0ea6ec786b84.eot?#iefix");
+  src: url("https://paulbrowndfs.github.io/ca_assets/fonts/56be84de-9d60-4089-8df0-0ea6ec786b84.eot?#iefix") format("eot"), url("https://paulbrowndfs.github.io/ca_assets/fonts/50d35bbc-dfd4-48f1-af16-cf058f69421d.woff") format("woff"), url("https://paulbrowndfs.github.io/ca_assets/fonts/278bef59-6be1-4800-b5ac-1f769ab47430.ttf") format("truetype"), url("https://paulbrowndfs.github.io/ca_assets/fonts/2e309b1b-08b8-477f-bc9e-7067cf0af0b3.svg#2e309b1b-08b8-477f-bc9e-7067cf0af0b3") format("svg");
+}
+
+@font-face {
+  font-family: "HelveticaNeueW01-45Ligh";
+  src: url("https://paulbrowndfs.github.io/ca_assets/fonts/ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix");
+  src: url("https://paulbrowndfs.github.io/ca_assets/fonts/ae1656aa-5f8f-4905-aed0-93e667bd6e4a.eot?#iefix") format("eot"), url("https://paulbrowndfs.github.io/ca_assets/fonts/530dee22-e3c1-4e9f-bf62-c31d510d9656.woff") format("woff"), url("https://paulbrowndfs.github.io/ca_assets/fonts/688ab72b-4deb-4e15-a088-89166978d469.ttf") format("truetype"), url("https://paulbrowndfs.github.io/ca_assets/fonts/7816f72f-f47e-4715-8cd7-960e3723846a.svg#7816f72f-f47e-4715-8cd7-960e3723846a") format("svg");
+}
+
+@font-face {
+  font-family: "HelveticaNeueW01-75Bold";
+  src: url("https://paulbrowndfs.github.io/ca_assets/fonts/c07fef9e-a934-42d7-92ad-69205f2b8a00.eot?#iefix");
+  src: url("https://paulbrowndfs.github.io/ca_assets/fonts/c07fef9e-a934-42d7-92ad-69205f2b8a00.eot?#iefix") format("eot"), url("https://paulbrowndfs.github.io/ca_assets/fonts/14ff6081-326d-4dae-b778-d7afa66166fc.woff") format("woff"), url("https://paulbrowndfs.github.io/ca_assets/fonts/8fda1e47-19be-46c7-8d83-8d4fb35572f0.ttf") format("truetype"), url("https://paulbrowndfs.github.io/ca_assets/fonts/f751c8ae-1057-46d9-8d74-62592e002568.svg#f751c8ae-1057-46d9-8d74-62592e002568") format("svg");
+}
+
+@font-face {
+  font-family: "HelveticaNeueW02-55Roma";
+  src: url("https://paulbrowndfs.github.io/ca_assets/fonts/0b3a3fca-0fad-402b-bd38-fdcbad1ef776.eot?#iefix");
+  src: url("https://paulbrowndfs.github.io/ca_assets/fonts/0b3a3fca-0fad-402b-bd38-fdcbad1ef776.eot?#iefix") format("eot"), url("https://paulbrowndfs.github.io/ca_assets/fonts/d5af76d8-a90b-4527-b3a3-182207cc3250.woff") format("woff"), url("https://paulbrowndfs.github.io/ca_assets/fonts/1d238354-d156-4dde-89ea-4770ef04b9f9.ttf") format("truetype"), url("https://paulbrowndfs.github.io/ca_assets/fonts/b68875cb-14a9-472e-8177-0247605124d7.svg#b68875cb-14a9-472e-8177-0247605124d7") format("svg");
+}
+
 /* Css Styles*/
 /* BOOTSTRAP 3.3.7 Carousel CSS ONLY */
 .carousel {
@@ -245,6 +269,268 @@
 /* END BOOTSTRAP Carousel 3.3.7 CSS */
 .js_banner_wrap .item {
   height: 619px;
+}
+
+.productDetail._mobile_ {
+  display: none;
+}
+
+.productDetail._label_ {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #fff;
+}
+
+.productDetail._label_.UK-1 {
+  width: 360px;
+  height: 115px;
+}
+
+.productDetail._label_.UK-1 .label_left {
+  background: #fee62b;
+  width: 124px;
+  height: 80px;
+  text-align: center;
+  float: left;
+}
+
+.productDetail._label_.UK-1 .label_right_finance {
+  float: right;
+  width: 236px;
+  height: 80px;
+  background: #6b2293;
+}
+
+.productDetail._label_.UK-1 .label_middle {
+  position: absolute;
+  width: 144px;
+  left: 124px;
+  background: #fff;
+  margin: 3px 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 74px;
+  overflow: hidden;
+}
+
+.productDetail._label_.UK-1 .label_middle h4.product_title {
+  font-weight: 300;
+}
+
+.productDetail._label_.UK-1 .label_right_finance p {
+  float: right;
+  width: 92px;
+  text-align: center;
+  padding: 10px 5px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  color: #fff;
+  font-family: HelveticaNeueW01-45Ligh, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.productDetail._label_.UK-1 .label_right_finance p span {
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  display: block;
+}
+
+.productDetail._label_.UK-1 .label_middle {
+  font-family: "HelveticaNeueW02-55Roma", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  color: #193568;
+}
+
+.productDetail._label_.UK-1 .label_middle strong {
+  display: block;
+  line-height: 28px;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.productDetail._label_.UK-1 h5.offer_price {
+  font-size: 14px;
+  margin-top: 5px;
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  font-weight: 300;
+}
+
+.productDetail._label_.UK-1 h5.offer_price span {
+  display: block;
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.productDetail._label_.ES-1 {
+  width: 271px;
+  height: 80px;
+}
+
+.productDetail._label_.ES-1 .label_left {
+  background: #fee62b;
+  width: 124px;
+  height: 80px;
+  text-align: center;
+  float: left;
+}
+
+.productDetail._label_.ES-1 .label_right_finance {
+  float: right;
+  width: 147px;
+  height: 80px;
+  background: #6b2293;
+}
+
+.productDetail._label_.ES-1 .label_middle {
+  position: absolute;
+  width: 144px;
+  left: 124px;
+  background: #fff;
+  margin: 3px 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 74px;
+  overflow: hidden;
+}
+
+.productDetail._label_.ES-1 .label_middle h4.product_title {
+  font-weight: 300;
+}
+
+.productDetail._label_.ES-1 .label_right_finance p {
+  display: none;
+}
+
+.productDetail._label_.ES-1 .label_right_finance p span {
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  display: block;
+}
+
+.productDetail._label_.ES-1 .label_middle {
+  font-family: "HelveticaNeueW02-55Roma", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  color: #193568;
+}
+
+.productDetail._label_.ES-1 .label_middle strong {
+  display: block;
+  line-height: 28px;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.productDetail._label_.ES-1 h5.offer_price {
+  font-size: 14px;
+  margin-top: 5px;
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  font-weight: 300;
+}
+
+.productDetail._label_.ES-1 h5.offer_price span {
+  display: block;
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.productDetail._label_.ES-1 .available_colours {
+  display: none;
+}
+
+.productDetail._label_.NL-1 {
+  width: 271px;
+  height: 80px;
+}
+
+.productDetail._label_.NL-1 .label_left {
+  background: #ed5551;
+  width: 124px;
+  height: 80px;
+  text-align: center;
+  float: left;
+}
+
+.productDetail._label_.NL-1 .label_right_finance {
+  float: right;
+  width: 147px;
+  height: 80px;
+  background: #db928f;
+}
+
+.productDetail._label_.NL-1 .label_middle {
+  position: absolute;
+  width: 144px;
+  left: 124px;
+  background: #fff;
+  margin: 3px 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 5px 10px;
+  height: 74px;
+  overflow: hidden;
+}
+
+.productDetail._label_.NL-1 .label_middle h4.product_title {
+  font-weight: 300;
+}
+
+.productDetail._label_.NL-1 .label_right_finance p {
+  display: none;
+}
+
+.productDetail._label_.NL-1 .label_right_finance p span {
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  display: block;
+}
+
+.productDetail._label_.NL-1 .label_middle {
+  font-family: "HelveticaNeueW02-55Roma", Arial, sans-serif;
+  font-size: 12px;
+  line-height: 12px;
+  color: #ed5551;
+}
+
+.productDetail._label_.NL-1 .label_middle strong {
+  display: block;
+  line-height: 28px;
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.productDetail._label_.NL-1 h5.offer_price {
+  font-size: 14px;
+  margin-top: 5px;
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  font-weight: 300;
+  color: #fff;
+}
+
+.productDetail._label_.NL-1 h5.offer_price span {
+  display: block;
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.productDetail._label_.NL-1 .available_colours {
+  display: none;
+}
+
+.productDetail .available_colours img {
+  padding-top: 5px;
+}
+
+.productDetail h4.product_title span {
+  display: block;
 }
 
 .carousel-inner .item h2 {
@@ -838,6 +1124,67 @@ section.timer {
   border-right: none;
 }
 
+/* HP-cd LATE 2019  CSS Styles */
+.countdownContainer.countdown_v2.HPcd-late2019 h6 {
+  font-size: 21px;
+}
+
+.countdownContainer.HPcd-late2019 .timer {
+  width: 212px;
+  margin: 5px auto;
+  background: #000;
+}
+
+.countdownContainer.HPcd-late2019 .timer p span {
+  font-size: 24px;
+  font-family: "HelveticaNeueW01-45Ligh", Arial, sans-serif;
+  display: block;
+  color: #fff;
+  font-weight: 700;
+}
+
+.countdownContainer.HPcd-late2019 .timer p {
+  width: 65px;
+  margin: 3px 0;
+  font-size: 12px;
+  text-align: center;
+  float: left;
+  clear: none;
+  color: #fff;
+  position: relative;
+  left: 25px;
+  top: 14px;
+}
+
+.countdownContainer.HPcd-late2019 .timer p span {
+  font-size: 28px;
+  font-family: HelveticaNeueW01-45Ligh, Arial, sans-serif;
+  display: block;
+  color: #fff;
+}
+
+.countdownContainer.HPcd-late2019 .timer {
+  width: 322px;
+  height: 80px;
+  margin: 5px auto;
+  background: #000;
+}
+
+.bannerTextContainer.HPcd-late2019.carCountdown {
+  width: 322px;
+}
+
+.countdownContainer.HPcd-late2019 {
+  width: 322px;
+  background: none;
+}
+
+.countdownContainer.HPcd-late2019 span.cdDays,
+.countdownContainer.HPcd-late2019 span.cdHours,
+.countdownContainer.HPcd-late2019 span.cdMinutes {
+  border-right: 1px solid #555;
+}
+
 @media (max-width: 1365px) {
   .bannerTextContainer.HPcd-LargeCenter.carCountdown .countdownContainer {
     width: 364px;
@@ -850,6 +1197,35 @@ section.timer {
     display: block;
     color: #fff;
     font-size: 35px;
+  }
+  .countdownContainer.HPcd-late2019 .timer {
+    width: 238px;
+    height: 54px;
+    margin: 4px auto;
+  }
+  .bannerTextContainer.HPcd-late2019.carCountdown {
+    width: 238px;
+  }
+  .countdownContainer.HPcd-late2019 {
+    width: 238px;
+    background: none;
+  }
+  .countdownContainer.HPcd-late2019 .timer p {
+    width: 55px;
+    font-size: 11px;
+    left: 5px;
+    line-height: 17px;
+    top: 10px;
+  }
+  .countdownContainer.countdown_v2.HPcd-late2019 h6 {
+    font-size: 16px;
+    line-height: 20px;
+  }
+  .countdownContainer.HPcd-late2019 .timer p span {
+    font-size: 22px;
+    font-family: HelveticaNeueW01-45Ligh, Arial, sans-serif;
+    display: block;
+    color: #fff;
   }
 }
 
@@ -1013,5 +1389,38 @@ section.timer {
     font-family: HelveticaNeueW01-45Ligh, Arial, sans-serif;
     display: block;
     color: #fff;
+  }
+  .countdownContainer.HPcd-late2019 .timer {
+    width: 225px;
+    height: 58px;
+    margin: 4px auto;
+  }
+  .bannerTextContainer.HPcd-late2019.carCountdown {
+    width: 245px;
+  }
+  .countdownContainer.HPcd-late2019 {
+    width: 245px;
+    background: none;
+  }
+  .countdownContainer.HPcd-late2019 .timer p {
+    width: 52px;
+    font-size: 11px;
+    left: 5px;
+    line-height: 24px;
+    top: 6px;
+  }
+  .countdownContainer.countdown_v2.HPcd-late2019 h6 {
+    font-size: 16px;
+    line-height: 17px;
+  }
+  .countdownContainer.HPcd-late2019 .timer p span {
+    font-size: 25px;
+    font-family: HelveticaNeueW01-45Ligh, Arial, sans-serif;
+    display: block;
+    color: #fff;
+  }
+  #hpCarousel.late2019 .carousel-indicators li {
+    -webkit-box-shadow: inset 1px 1px 3px #777;
+    box-shadow: inset 1px 1px 3px #777;
   }
 }

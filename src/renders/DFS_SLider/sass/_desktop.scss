@@ -225,6 +225,282 @@
     height: 619px;
 }
 
+.productDetail._mobile_ {
+  display: none;
+}
+
+// Desktop Pricing Label 
+.productDetail._label_ {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background: #fff;
+}
+
+// UK-1 Label
+.productDetail._label_.UK-1 {
+  width: 360px;
+  height: 115px;
+
+  & .label_left {
+    background: #fee62b;
+    width: 124px;
+    height: 80px;
+    text-align: center;
+    float: left;
+  }
+
+  & .label_right_finance {
+    float: right;
+    width: 236px;
+    height: 80px;
+    background: #6b2293;
+  }
+
+  & .label_middle {
+    position: absolute;
+    width: 144px;
+    left: 124px;
+    background: #fff;
+    margin: 3px 0;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    height: 74px;
+    overflow: hidden;
+
+    & h4.product_title {
+      font-weight: 300;
+    }
+  }
+
+  & .label_right_finance p {
+    float: right;
+    width: 92px;
+    text-align: center;
+    padding: 10px 5px;
+    box-sizing: border-box;
+    color: #fff;
+    font-family: HelveticaNeueW01-45Ligh, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  & .label_right_finance p span {
+    font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    display: block;
+  }
+
+  & .label_middle {
+    font-family: "HelveticaNeueW02-55Roma", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    color: #193568;
+
+    & strong {
+      display: block;
+      line-height: 28px;
+      font-weight: 300;
+      font-size: 20px;
+    }
+  }
+
+  & h5.offer_price {
+    font-size: 14px;
+    margin-top: 5px;
+    font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+    font-weight: 300;
+
+    & span {
+      display: block;
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+}
+
+// end UK-1
+
+
+// ES-1 Label
+.productDetail._label_.ES-1 {
+  width: 271px;
+  height: 80px;
+
+  & .label_left {
+    background: #fee62b;
+    width: 124px;
+    height: 80px;
+    text-align: center;
+    float: left;
+  }
+
+  & .label_right_finance {
+    float: right;
+    width: 147px;
+    height: 80px;
+    background: #6b2293;
+  }
+
+  & .label_middle {
+    position: absolute;
+    width: 144px;
+    left: 124px;
+    background: #fff;
+    margin: 3px 0;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    height: 74px;
+    overflow: hidden;
+
+    & h4.product_title {
+      font-weight: 300;
+    }
+  }
+
+  & .label_right_finance p {
+    display: none;
+  }
+
+  & .label_right_finance p span {
+    font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    display: block;
+  }
+
+  & .label_middle {
+    font-family: "HelveticaNeueW02-55Roma", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    color: #193568;
+
+    & strong {
+      display: block;
+      line-height: 28px;
+      font-weight: 300;
+      font-size: 20px;
+    }
+  }
+
+  & h5.offer_price {
+    font-size: 14px;
+    margin-top: 5px;
+    font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+    font-weight: 300;
+
+    & span {
+      display: block;
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+
+  & .available_colours {
+    display: none;
+  }
+}
+
+
+
+// end ES-1
+
+// NL-1 Label
+.productDetail._label_.NL-1 {
+  width: 271px;
+  height: 80px;
+
+  & .label_left {
+    background: #ed5551;
+    width: 124px;
+    height: 80px;
+    text-align: center;
+    float: left;
+  }
+
+  & .label_right_finance {
+    float: right;
+    width: 147px;
+    height: 80px;
+    background: #db928f;
+  }
+
+  & .label_middle {
+    position: absolute;
+    width: 144px;
+    left: 124px;
+    background: #fff;
+    margin: 3px 0;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    height: 74px;
+    overflow: hidden;
+
+    & h4.product_title {
+      font-weight: 300;
+    }
+  }
+
+  & .label_right_finance p {
+    display: none;
+  }
+
+  & .label_right_finance p span {
+    font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+    font-size: 20px;
+    line-height: 24px;
+    display: block;
+  }
+
+  & .label_middle {
+    font-family: "HelveticaNeueW02-55Roma", Arial, sans-serif;
+    font-size: 12px;
+    line-height: 12px;
+    color: #ed5551;
+
+    & strong {
+      display: block;
+      line-height: 28px;
+      font-weight: 300;
+      font-size: 20px;
+    }
+  }
+
+  & h5.offer_price {
+    font-size: 14px;
+    margin-top: 5px;
+    font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+    font-weight: 300;
+    color: #fff;
+
+    & span {
+      display: block;
+      font-size: 36px;
+      line-height: 36px;
+    }
+  }
+
+  & .available_colours {
+    display: none;
+  }
+}
+
+
+
+// end NL-1
+
+
+
+.productDetail .available_colours img {
+  padding-top: 5px;
+}
+
+.productDetail h4.product_title span {
+  display: block;
+}
+
+
 .carousel-inner .item h2 {
     font-family: sans-serif;
     font-weight: 700;
@@ -809,6 +1085,67 @@ section.timer {
     border-right: none;
 }
 
+/* HP-cd LATE 2019  CSS Styles */
+.countdownContainer.countdown_v2.HPcd-late2019 h6 {
+  font-size: 21px;
+}
+
+.countdownContainer.HPcd-late2019 .timer {
+  width: 212px;
+  margin: 5px auto;
+  background: #000;
+}
+
+.countdownContainer.HPcd-late2019 .timer p span {
+  font-size: 24px;
+  font-family: "HelveticaNeueW01-45Ligh", Arial, sans-serif;
+  display: block;
+  color: #fff;
+  font-weight: 700;
+}
+
+.countdownContainer.HPcd-late2019 .timer p {
+  width: 65px;
+  margin: 3px 0;
+  font-size: 12px;
+  text-align: center;
+  float: left;
+  clear: none;
+  color: #fff;
+  position: relative;
+  left: 25px;
+  top: 14px;
+}
+
+.countdownContainer.HPcd-late2019 .timer p span {
+  font-size: 28px;
+  font-family: HelveticaNeueW01-45Ligh, Arial, sans-serif;
+  display: block;
+  color: #fff;
+}
+
+.countdownContainer.HPcd-late2019 .timer {
+  width: 322px;
+  height: 80px;
+  margin: 5px auto;
+  background: #000;
+}
+
+.bannerTextContainer.HPcd-late2019.carCountdown {
+  width: 322px;
+}
+
+.countdownContainer.HPcd-late2019 {
+  width: 322px;
+  background: none;
+}
+
+.countdownContainer.HPcd-late2019 span.cdDays,
+.countdownContainer.HPcd-late2019 span.cdHours,
+.countdownContainer.HPcd-late2019 span.cdMinutes {
+  border-right: 1px solid #555;
+}
+
 @media (max-width: 1365px) {
 
   .bannerTextContainer.HPcd-LargeCenter.carCountdown .countdownContainer {
@@ -824,5 +1161,40 @@ section.timer {
       color: #fff;
       font-size: 35px;
   }
+
+   .countdownContainer.HPcd-late2019 .timer {
+     width: 238px;
+     height: 54px;
+     margin: 4px auto;
+   }
+
+   .bannerTextContainer.HPcd-late2019.carCountdown {
+     width: 238px;
+   }
+
+   .countdownContainer.HPcd-late2019 {
+     width: 238px;
+     background: none;
+   }
+
+   .countdownContainer.HPcd-late2019 .timer p {
+     width: 55px;
+     font-size: 11px;
+     left: 5px;
+     line-height: 17px;
+     top: 10px;
+   }
+
+   .countdownContainer.countdown_v2.HPcd-late2019 h6 {
+     font-size: 16px;
+     line-height: 20px;
+   }
+
+   .countdownContainer.HPcd-late2019 .timer p span {
+     font-size: 22px;
+     font-family: HelveticaNeueW01-45Ligh, Arial, sans-serif;
+     display: block;
+     color: #fff;
+   }
 
 }

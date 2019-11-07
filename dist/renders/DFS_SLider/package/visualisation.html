@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Home Page Desktop Carousel</title>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="DFS_SLider.min.css?v1.2b"/>
+    <link rel="stylesheet" href="DFS_SLider.min.css?vNov7"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
     <style>
@@ -65,6 +65,61 @@ function getQueryVar(variable) {
         callback: function (data) {
             // data[0].renderTypes = renderTypes;
             data[0].spec = {"roiPrices": data[0].roi, "testDate" : data[0].testDate};
+
+            var roiQ = getQueryVar('roi');
+            if(roiQ){
+            data[0].spec.roiPrices = true;
+            }
+
+            // setup  pricing labels for each slide
+            for(s=0; s < data[0].slides.length; s++){
+                 
+                 // pricing Label
+                 // locale changes
+
+                 // Price
+                 if(data[0].slides[s].priceLabel){
+                 var p = data[0].slides[s].priceLabel[1].split(';');
+
+                 if(p.length > 1) {
+                 data[0].slides[s].priceLabel[1] = data[0].spec.roiPrices ? p[1] : p[0];
+                 }
+
+                 // after event text / save
+
+                 for (x=2; x < 4; x++) { var a=data[0].slides[s].priceLabel[x].split(';'); if(a.length> 1) {
+                     data[0].slides[s].priceLabel[x] = data[0].spec.roiPrices ? (a[0].split('£')[0] + a[1]) : a[0];
+                     }
+
+                     }
+
+                     // create finance price
+
+                     var pp = Number(data[0].slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
+
+                     if(data[0].spec.roiPrices) {
+                     data[0].slides[s].priceLabel[4] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
+                     } else {
+                     data[0].slides[s].priceLabel[4] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
+                     }
+
+                     // build desktop finance details
+
+                     if(data[0].slides[s].priceLabel && data[0].slides[s].priceLabel[4]) {
+                     data[0].slides[s].financeArray = data[0].slides[s].priceLabel[4].split(' a month ');
+                     data[0].slides[s].financeArray.push('a month');
+                     } 
+
+                     if(data[0].slides[s].priceLabel && data[0].slides[s].priceLabel[6]) {
+                     data[0].slides[s].priceLabelTop = data[0].slides[s].priceLabel[6].split(';');
+                     } else {
+                     data[0].slides[s].priceLabelTop = ['0','0','0'];
+                     }
+
+                     }
+            }
+
+
             console.log('dataSaved: to SLData');
             SLData = data[0];
             var template = Handlebars.template(AmpCa.templates.bannerMulti);

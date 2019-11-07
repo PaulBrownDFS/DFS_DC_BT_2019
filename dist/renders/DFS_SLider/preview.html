@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Home Page Desktop Carousel</title>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="https://c1.adis.ws/c/dfs/HPCarousel_Desktop_feb21-19css?vfeb21"/>
+    <link rel="stylesheet" href="DFS_SLider.min.css?vNov7" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
     <style>
@@ -16,9 +16,9 @@
     </style>
 </head>
 <body>
-<!-- New CA Carousel PB -->
+<!-- New DC Carousel PB -->
 <div class="js_banner_wrap" data-roi="false"></div>
-<!-- New CA Carousel PB -->
+<!-- New DC Carousel PB -->
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 
@@ -67,6 +67,54 @@ function getQueryVar(variable) {
             data[0].spec = {"roiPrices": $('.js_banner_wrap').data('roi'), "testDate" : data[0].testDate};
             if(getQueryVar('roi')){ data[0].carouselslot.roi = getQueryVar('roi'); } else {
               data[0].carouselslot.roi = $('.js_banner_wrap').data('roi');
+            }
+
+            // setup  pricing labels for each slide
+            for(s=0; s < data[0].carouselslot.slides.length; s++){
+                 
+                 // pricing Label
+                 // locale changes
+
+                 // Price
+                 if(data[0].carouselslot.slides[s].priceLabel){
+                 var p = data[0].carouselslot.slides[s].priceLabel[1].split(';');
+
+                 if(p.length > 1) {
+                 data[0].carouselslot.slides[s].priceLabel[1] = data[0].carouselslot.roi ? p[1] : p[0];
+                 }
+
+                 // after event text / save
+
+                 for (x=2; x < 4; x++) { var a=data[0].carouselslot.slides[s].priceLabel[x].split(';'); if(a.length> 1) {
+                     data[0].carouselslot.slides[s].priceLabel[x] = data[0].carouselslot.roi ? (a[0].split('£')[0] + a[1]) : a[0];
+                     }
+
+                     }
+
+                     // create finance price
+
+                     var pp = Number(data[0].carouselslot.slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
+
+                     if(data[0].carouselslot.roi) {
+                     data[0].carouselslot.slides[s].priceLabel[4] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
+                     } else {
+                     data[0].carouselslot.slides[s].priceLabel[4] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
+                     }
+
+                     // build desktop finance details
+
+                     if(data[0].carouselslot.slides[s].priceLabel && data[0].carouselslot.slides[s].priceLabel[4]) {
+                     data[0].carouselslot.slides[s].financeArray = data[0].carouselslot.slides[s].priceLabel[4].split(' a month ');
+                     data[0].carouselslot.slides[s].financeArray.push('a month');
+                     } 
+
+                     if(data[0].carouselslot.slides[s].priceLabel && data[0].carouselslot.slides[s].priceLabel[6]) {
+                     data[0].carouselslot.slides[s].priceLabelTop = data[0].carouselslot.slides[s].priceLabel[6].split(';');
+                     } else {
+                     data[0].carouselslot.slides[s].priceLabelTop = ['0','0','0'];
+                     }
+
+                     }
             }
 
             console.log('dataSaved: to SLData');

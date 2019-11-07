@@ -60,7 +60,7 @@
       callback: function (data) {
 
         // ROI preview mode switch
-        data[0].roi = data[0].roiPreview;
+        data[0].roi = data[0].roiPreview || false;
 
         var roiQ = getQueryVar('roi');
         if(roiQ){
@@ -71,6 +71,7 @@
         // locale changes
 
         // Price
+        if(data[0].priceLabel){
         var p = data[0].priceLabel[1].split(';');
         
           if(p.length > 1) {
@@ -111,6 +112,8 @@
         } else {
           data[0].priceLabelTop = ['0','0','0'];
         }
+
+      }
 
         
 

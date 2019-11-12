@@ -52,7 +52,7 @@
                         data-daterange3="{{textVariance3}}"
                         data-daterange4="{{textVariance4}}"
                         data-hidefinalmessage="{{#if hideFinalMessage}}true{{else}}false{{/if}}"
-                        data-testdate="">
+                        data-testdate="{{../../testDate}}">
                     <h6 class="cdHeader"><!-- DEFAULT HEADER TEXT--></h6>
                       <section class="timer {{#if hasCountdown}} showCountdown{{else}}hideCountdown{{/if}}">
                         <img src="//dfs.a.bigcontent.io/v1/static/loading_please_wait?v30" alt="loading..">
@@ -169,7 +169,7 @@
   <div class="uk">Showing UK Carousel </div>
   {{/if}}
   <style>
-  /*  13th June 2018 v2 */
+  /*  NOV  2019 v1 */
   .uk, .roi {
     text-align: center;
     font-size: 14px;
@@ -257,6 +257,14 @@
       }
     {{/if}}
 
+  {{#if showIcons }}
+    div#hpCarousel.late2019  .item.slideIndex{{inc @index}} .availability {
+      display:block;
+    }
+    {{/if}}
+  }
+    {{/each}}
+@media (max-width: 1023px) {
    div#hpCarousel.late2019 .carousel-inner {
         width: 540px;
         margin: auto;
@@ -284,7 +292,6 @@
 
  div#hpCarousel.late2019 .availability {
     min-height: 40px;
-    display:block;
   }
 
   div#hpCarousel.late2019 .availability p {
@@ -366,7 +373,7 @@
       line-height: 21px !important;
   }
   }
-  {{/each}}
+  
 
   </style>
 

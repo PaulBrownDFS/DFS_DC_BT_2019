@@ -359,60 +359,60 @@ function renderContent(data) {
 // use the Amplience CMS JavaScript SDK to manipulate the JSON-LD into a content tree
 var contentTree = amp.inlineContent(data)[0];
   SLData = contentTree;
-  if(contentTree.carouselslot.slides.length > dfs.HPSlider.maxSlides) {
-    contentTree.carouselslot.slides.length = dfs.HPSlider.maxSlides;
+  if(contentTree.slides.length > dfs.HPSlider.maxSlides) {
+    contentTree.slides.length = dfs.HPSlider.maxSlides;
   }
     
-    contentTree.carouselslot.spec = {
+    contentTree.spec = {
       "roi": dfs.HPSlider.isROI,
       "testDate": ""
     };
 
       // setup  pricing labels for each slide
-      for (s = 0; s < contentTree.carouselslot.slides.length; s++) {
+      for (s = 0; s < contentTree.slides.length; s++) {
 
         // pricing Label
         // locale changes
 
         // Price
-        if (contentTree.carouselslot.slides[s].priceLabel) {
-          var p = contentTree.carouselslot.slides[s].priceLabel[1].split(';');
+        if (contentTree.slides[s].priceLabel) {
+          var p = contentTree.slides[s].priceLabel[1].split(';');
 
           if (p.length > 1) {
-            contentTree.carouselslot.slides[s].priceLabel[1] = contentTree.spec.roiPrices ? p[1] : p[0];
+            contentTree.slides[s].priceLabel[1] = contentTree.spec.roiPrices ? p[1] : p[0];
           }
 
           // after event text / save
 
           for (x = 2; x < 4; x++) {
-            var a = contentTree.carouselslot.slides[s].priceLabel[x].split(';');
+            var a = contentTree.slides[s].priceLabel[x].split(';');
             if (a.length > 1) {
-              contentTree.carouselslot.slides[s].priceLabel[x] = contentTree.spec.roiPrices ? (a[0].split('£')[0] + a[1]) : a[0];
+              contentTree.slides[s].priceLabel[x] = contentTree.spec.roiPrices ? (a[0].split('£')[0] + a[1]) : a[0];
             }
 
           }
 
           // create finance price
 
-          var pp = Number(contentTree.carouselslot.slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
+          var pp = Number(contentTree.slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
 
           if (contentTree.spec.roiPrices) {
-            contentTree.carouselslot.slides[s].priceLabel[4] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
+            contentTree.slides[s].priceLabel[4] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
           } else {
-            contentTree.carouselslot.slides[s].priceLabel[4] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
+            contentTree.slides[s].priceLabel[4] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
           }
 
           // build desktop finance details
 
-          if (contentTree.carouselslot.slides[s].priceLabel && contentTree.carouselslot.slides[s].priceLabel[4]) {
-            contentTree.carouselslot.slides[s].financeArray = contentTree.carouselslot.slides[s].priceLabel[4].split(' a month ');
-            contentTree.carouselslot.slides[s].financeArray.push('a month');
+          if (contentTree.slides[s].priceLabel && contentTree.slides[s].priceLabel[4]) {
+            contentTree.slides[s].financeArray = contentTree.slides[s].priceLabel[4].split(' a month ');
+            contentTree.slides[s].financeArray.push('a month');
           }
 
-          if (contentTree.carouselslot.slides[s].priceLabel && contentTree.carouselslot.slides[s].priceLabel[6]) {
-            contentTree.carouselslot.slides[s].priceLabelTop = contentTree.carouselslot.slides[s].priceLabel[6].split(';');
+          if (contentTree.slides[s].priceLabel && contentTree.slides[s].priceLabel[6]) {
+            contentTree.slides[s].priceLabelTop = contentTree.slides[s].priceLabel[6].split(';');
           } else {
-            contentTree.carouselslot.slides[s].priceLabelTop = ['0', '0', '0'];
+            contentTree.slides[s].priceLabelTop = ['0', '0', '0'];
           }
 
         }

@@ -1,3 +1,5 @@
 @import "fonts";
 @import "desktop";
+@media (max-width: 1023px) {
 @import "mobile";
+}

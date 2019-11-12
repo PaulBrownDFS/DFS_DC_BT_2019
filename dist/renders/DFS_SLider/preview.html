@@ -25,7 +25,7 @@
 <script src="../../../reusable/all/dynamicContent.min.js"></script>
 
 <!-- This is a compiled template-->
-<script src="../bannerMulti_preview.min.js?dec13c"></script>
+<script src="../bannerMulti_preview.min.js?nov7"></script>
 
 <script>
 // Visual Loader
@@ -59,7 +59,9 @@ function getQueryVar(variable) {
             if(data[0].previewDate) {
               var this_timeStamp = data[0].previewDate[0];
               var dateString = new Date(Number(this_timeStamp));
-              data[0].testDate = dateString.getDate() + '/' + (dateString.getMonth() + 1) + '/' + dateString.getFullYear();
+              data[0].testDate = dateString.getDate() + '/' + (dateString.getMonth() + 1) + '/' +
+              dateString.getFullYear() + ' ' + dateString.getHours() + ':' + dateString.getMinutes() + ':'
+              +dateString.getSeconds();
             } else {
               data[0].testDate = "";
             }

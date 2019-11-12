@@ -1,5 +1,5 @@
 // Carousel
-// original Filename: carouselLoader_hpSlot.min.js OCT 2019
+// original Filename: carouselLoader_hpSlot.min.js NOV 2019
 /* ========================================================================
  * Bootstrap: transition.js v3.3.7
  * http://getbootstrap.com/javascript/#transitions
@@ -317,7 +317,7 @@ if (typeof jQuery === 'undefined') {
 }(jQuery);
 
 // ===========================================
-//  Carousel Builder Slot V1.0
+//  Carousel Builder Slot V1.1
 // ===========================================
 
   if(!dfs) {
@@ -327,7 +327,8 @@ if (typeof jQuery === 'undefined') {
   dfs.HPSlider = {
     visualID: $('.js_banner_wrap').data('slotid'),
     isROI: $('.js_banner_wrap').data('roi'),
-    maxSlides: $('.js_banner_wrap').data('maxslides') || 5
+    maxSlides: $('.js_banner_wrap').data('maxslides') || 5,
+    template: $('.js_banner_wrap').data('template')
   }
 
     var cacheBuster = Math.random().toString(36).substr(2, 12),
@@ -342,9 +343,8 @@ if (typeof jQuery === 'undefined') {
         url: masterDeliveryUrl,
       });
 
-      masterRequest
-      .done(function(data){
-        console.log('Ajax Request Data Fetch : Done', dfsSliderID);
+      masterRequest.done(function(data){
+
         renderContent(data);
 
       })
@@ -352,17 +352,72 @@ if (typeof jQuery === 'undefined') {
         console.log('Failed To Get Master ID Data');
         showErrorMessage();
       }).always(function(){
-        console.log('AJAX Has Completed', dfsSliderID);
+        console.log('Carousel Loaded: ', dfsSliderID);
       });
 
 function renderContent(data) {
 // use the Amplience CMS JavaScript SDK to manipulate the JSON-LD into a content tree
 var contentTree = amp.inlineContent(data)[0];
-  console.log('HPSlider DATA: ',contentTree);
+  SLData = contentTree;
   if(contentTree.carouselslot.slides.length > dfs.HPSlider.maxSlides) {
     contentTree.carouselslot.slides.length = dfs.HPSlider.maxSlides;
   }
-    contentTree.carouselslot.roi = dfs.HPSlider.isROI;
+    
+    contentTree.carouselslot.spec = {
+      "roi": dfs.HPSlider.isROI,
+      "testDate": ""
+    };
+
+      // setup  pricing labels for each slide
+      for (s = 0; s < contentTree.carouselslot.slides.length; s++) {
+
+        // pricing Label
+        // locale changes
+
+        // Price
+        if (contentTree.carouselslot.slides[s].priceLabel) {
+          var p = contentTree.carouselslot.slides[s].priceLabel[1].split(';');
+
+          if (p.length > 1) {
+            contentTree.carouselslot.slides[s].priceLabel[1] = contentTree.spec.roiPrices ? p[1] : p[0];
+          }
+
+          // after event text / save
+
+          for (x = 2; x < 4; x++) {
+            var a = contentTree.carouselslot.slides[s].priceLabel[x].split(';');
+            if (a.length > 1) {
+              contentTree.carouselslot.slides[s].priceLabel[x] = contentTree.spec.roiPrices ? (a[0].split('£')[0] + a[1]) : a[0];
+            }
+
+          }
+
+          // create finance price
+
+          var pp = Number(contentTree.carouselslot.slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
+
+          if (contentTree.spec.roiPrices) {
+            contentTree.carouselslot.slides[s].priceLabel[4] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
+          } else {
+            contentTree.carouselslot.slides[s].priceLabel[4] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
+          }
+
+          // build desktop finance details
+
+          if (contentTree.carouselslot.slides[s].priceLabel && contentTree.carouselslot.slides[s].priceLabel[4]) {
+            contentTree.carouselslot.slides[s].financeArray = contentTree.carouselslot.slides[s].priceLabel[4].split(' a month ');
+            contentTree.carouselslot.slides[s].financeArray.push('a month');
+          }
+
+          if (contentTree.carouselslot.slides[s].priceLabel && contentTree.carouselslot.slides[s].priceLabel[6]) {
+            contentTree.carouselslot.slides[s].priceLabelTop = contentTree.carouselslot.slides[s].priceLabel[6].split(';');
+          } else {
+            contentTree.carouselslot.slides[s].priceLabelTop = ['0', '0', '0'];
+          }
+
+        }
+      }
+
 
 if (contentTree) {
   renderCarousel(contentTree);
@@ -370,7 +425,7 @@ if (contentTree) {
 }
 
 function renderCarousel(contentTree) {
-  var template = Handlebars.template(AmpCa.templates.bannerMulti_hpslot);
+  var template = Handlebars.template(AmpCa.templates[dfs.HPSlider.template]);
   document.querySelectorAll(".js_banner_wrap")[0].innerHTML = template(contentTree);
 }
 
@@ -381,180 +436,152 @@ function showErrorMessage(err) {
 }
 
 
+// ============================================
+//  Carousel Countdown V2.1 Nov 2019  ================
+// ============================================
+
+
 // Carousel Functions
-if(!dfs){
+if (!dfs) {
   var dfs = {};
 }
 dfs.countdownv2 = {
   timerID: [],
-  init: function(){
-    if(document.getElementsByClassName('countdown_v2').length) {
+  isMobile: function () {
+    if (window.location.origin.indexOf('https://m.') > -1) {
+      return true;
+    }
+    return false;
+  },
+  init: function () {
+    if (document.getElementsByClassName('countdown_v2').length) {
       this.addCountdown();
 
-      //hide Social icons via CSS in header on PDP
-      var hideWidget = document.createElement('style');
-          hideWidget.textContent = "article#rangePDP .mainHeader .pw-widget.ra1-pw-classicWidget {display: none}";
-          document.getElementsByTagName('body')[0].appendChild(hideWidget);
     }
   },
-  stopTimer:function(id){
-    // id is the timerID array key ie. 0 for the first countdown etc..
-    clearInterval(this.timerID[id]);
-  },
-  convertDate: function(xdate) {
-    var dateArray= xdate.split(' ');
+  convertDate: function (xdate) {
+    var dateArray = xdate.split(' ');
     var dx = dateArray[0].split('/');
     var formattedDate = dx[1] + '/' + dx[0] + '/' + dx[2];
-      if(dateArray[1] != undefined){
-        formattedDate += ' ' + dateArray[1];
-      }
+    if (dateArray[1] != undefined) {
+      formattedDate += ' ' + dateArray[1];
+    }
     return new Date(formattedDate);
   },
-  updateTestDate: function(testDate){
+  updateTestDate: function (testDate) {
     var time = new Date();
-        testDate.setHours(time.getHours());
-        testDate.setMinutes(time.getMinutes());
-        testDate.setSeconds(time.getSeconds());
+    testDate.setHours(time.getHours());
+    testDate.setMinutes(time.getMinutes());
+    testDate.setSeconds(time.getSeconds());
     return testDate;
   },
   timeRemaining: function (deadline, testDate) {
-      if(testDate instanceof Date) {
-        testDate = dfs.countdownv2.updateTestDate(testDate);
-        var dateTime = new Date(testDate);
-      } else {
-        var dateTime = new Date();
-      }
-      var t = Date.parse(deadline) - dateTime,
-          seconds = Math.floor((t / 1000) % 60),
-          minutes = Math.floor((t / 1000 / 60) % 60),
-          hours = Math.floor((t / (1000 * 60 * 60)) % 24),
-          days = Math.floor(t / (1000 * 60 * 60 * 24));
+    if (testDate instanceof Date) {
+      testDate = dfs.countdownv2.updateTestDate(testDate);
+      var dateTime = new Date(testDate);
+    } else {
+      var dateTime = new Date();
+    }
+    var t = Date.parse(deadline) - dateTime,
+      seconds = Math.floor((t / 1000) % 60),
+      minutes = Math.floor((t / 1000 / 60) % 60),
+      hours = Math.floor((t / (1000 * 60 * 60)) % 24),
+      days = Math.floor(t / (1000 * 60 * 60 * 24));
 
-      return { 'total': t, 'days': days, 'hours': hours, 'minutes': minutes, 'seconds': seconds }
+    return {
+      'total': t,
+      'days': days,
+      'hours': hours,
+      'minutes': minutes,
+      'seconds': seconds
+    }
   },
-  checkDateRange: function(startDate, endDate, testDate) {
-      var stDate = Date.parse(startDate),
-          enDate = Date.parse(endDate);
-          if(testDate instanceof Date) {
-            testDate = dfs.countdownv2.updateTestDate(testDate);
-            var now = Date.parse(new Date(testDate));
-          } else {
-            var now = Date.parse(new Date());
-          }
+  checkDateRange: function (startDate, endDate, testDate) {
+    var stDate = Date.parse(startDate),
+      enDate = Date.parse(endDate);
+    if (testDate instanceof Date) {
+      testDate = dfs.countdownv2.updateTestDate(testDate);
+      var now = Date.parse(new Date(testDate));
+    } else {
+      var now = Date.parse(new Date());
+    }
 
-      return (now > stDate && now < enDate);
+    return (now > stDate && now < enDate);
   },
-  addCountdown: function() {
+  addCountdown: function () {
     $('div.countdown_v2').each(function (index, value) {
       var _this = this,
-          deadline = [],
-          startDays = [],
-          hideFinalMessage = [],
-          imageSwapTarget = [],
-          data = $(_this).data();
-          hideFinalMessage[index] = data.hidefinalmessage;
-          deadline[index] = data.deadline;
-          startDays[index] = data.startdays,
-          imageSwapTarget[index] = data.imageswaptarget;
-          if(data.testdate) {
-            var testDate = dfs.countdownv2.convertDate(data.testdate);
-          } else {
-            var testDate = "";
-          }
-          dfs.countdownv2.timerID[index] = setInterval(function () {
+        deadline = [],
+        startDays = [],
+        hideFinalMessage = [],
+        data = $(_this).data();
+      hideFinalMessage[index] = data.hidefinalmessage;
+      deadline[index] = data.deadline;
+      startDays[index] = data.startdays;
 
-            //process Dynamic header/footer
+      if (data.testdate) {
+        var testDate = dfs.countdownv2.convertDate(data.testdate);
+      } else {
+        var testDate = "";
+      }
+      dfs.countdownv2.timerID[index] = setInterval(function () {
 
-            for (var i in data) {
+        //process Dynamic header/footer
 
-                // check date ranges
+        for (var i in data) {
+          // check date ranges
 
-                if (i.indexOf('daterange') > -1) {
-                  //process daterange
-                  var thisDateRange = data[i].split(',');
-                  // 0 = startDate / 1 = endDate / 2 = headerText / 3 = footerText / 4 = imageSwapTarget
-                  var startDate = dfs.countdownv2.convertDate(thisDateRange[0].trim()),
-                      endDate = dfs.countdownv2.convertDate(thisDateRange[1].trim());
-                      endDate.setHours(23,59,59);
-                      var headText = thisDateRange[2].trim(),
-                      footText = thisDateRange[3].trim();
+          if (i.indexOf('daterange') > -1 && data[i] !== "") {
+            //process daterange
+            var thisDateRange = data[i].split(',');
+            // 0 = startDate / 1 = endDate / 2 = headerText / 3 = footerText
+            var startDate = dfs.countdownv2.convertDate(thisDateRange[0].trim()),
+              endDate = dfs.countdownv2.convertDate(thisDateRange[1].trim());
+            endDate.setHours(23, 59, 59);
+            var headText = thisDateRange[2].trim(),
+              footText = thisDateRange[3].trim();
 
-
-                  if(dfs.countdownv2.checkDateRange(startDate, endDate, testDate)) {
-                    $(_this).children('h6.cdHeader').html(headText);
-                    $(_this).children('h6.cdFooter').html(footText);
-
-                    if(typeof thisDateRange[4] !== 'undefined') {
-                      var newImage = thisDateRange[4].trim(),
-                          newImageSrc = 'https://images.dfs.co.uk/i/dfs/' + newImage;
-                      // Image Swap
-                      var imageTarget = $('.' + imageSwapTarget[index]);
-
-
-                          imageTarget.each(function (index, value) {
-                            if(newImageSrc !== imageTarget[index].src) {
-                              imageTarget[index].src = newImageSrc;
-                              console.log('.'+ imageSwapTarget[index] +' Image Changed to:', newImageSrc);
-                            }
-                          });
-                    }
-
-                    if(typeof thisDateRange[5] !== 'undefined') {
-                      var es3Html = thisDateRange[5].trim(),
-                          es3Style = thisDateRange[6] || 'smallText',
-                          es3ExistingText = $(_this).prev().find('p');
-
-                          if(es3Html !== es3ExistingText.html()) {
-                            es3ExistingText.html(es3Html);
-                          }
-
-
-                      if(es3Style != 'smallText') {
-                            es3ExistingText.removeClass('smallText').addClass('largeText');
-                          }
-
-
-                    } else {
-                      $(_this).prev().find('p').html('');
-                    }
-                  }
-
-                }
-
+            if (dfs.countdownv2.checkDateRange(startDate, endDate, testDate)) {
+              $(_this).children('h6.cdHeader').html(headText);
+              $(_this).children('h6.cdFooter').html(footText);
             }
 
-
-            // process countdown
-            var jdate = dfs.countdownv2.convertDate(deadline[index]);
-            // console.log(deadline[index]);
-            var timer = dfs.countdownv2.timeRemaining(jdate, testDate);
-            if(startDays[index] >= timer.days) {
-              var timerHtml = "<p><span class=\"cdDays\">" + timer.days + "</span> Days</p><p><span class=\"cdHours\">" + timer.hours + "</span> Hours</p><p><span class=\"cdMinutes\">" + timer.minutes + "</span> Minutes</p><p><span class=\"seconds\">" + timer.seconds + "</span> Seconds</p><div class=\"clearfix\"></div>";
-              if(timer.days < 0) {
-                dfs.countdownv2.stopTimer(index);
-                $(_this).css('display','none');
-              }
-              $(_this).children('section').html(timerHtml);
-              $(_this).removeClass('nonCDText');
-              if(timer.days == 0 && !hideFinalMessage[index]){
-                //show ending footer if last day and hide Flag is false
-                $(_this).next('div').css('display','block');
-              }
-            } else {
-              // // no countdown text
-              $(_this).children('section').html('');
-              $(_this).addClass('nonCDText');
-            }
           }
-            ,1000);
+
+        }
+
+
+        // process countdown
+        var jdate = dfs.countdownv2.convertDate(deadline[index]);
+        var timer = dfs.countdownv2.timeRemaining(jdate, testDate);
+        if (startDays[index] >= timer.days) {
+          var timerHtml = "<p><span class=\"cdDays\">" + timer.days + "</span> Days</p><p><span class=\"cdHours\">" + timer.hours + "</span> Hours</p><p><span class=\"cdMinutes\">" + timer.minutes + "</span> Minutes</p><p><span class=\"seconds\">" + timer.seconds + "</span> Seconds</p><div class=\"clearfix\"></div>";
+          if (timer.days < 0) {
+            dfs.countdownv2.stopTimer(index);
+            $(_this).css('display', 'none');
+          }
+          $(_this).children('section').html(timerHtml);
+          if (timer.days == 0 && !dfs.countdownv2.isMobile() && !hideFinalMessage[index]) {
+            //show ending footer if last day and desktop
+            $(_this).next('div').css('display', 'block');
+          }
+        } else {
+          // // no countdown text
+          $(_this).children('section').html('');
+        }
+      }, 1000);
     });
   },
-  previewDate: function(newDate){
-    $('.countdown_v2').each(function(index){
+  stopTimer: function (id) {
+    // id is the timerID array key ie. 0 for the first countdown etc..
+    clearInterval(this.timerID[id]);
+  },
+  previewDate: function (newDate) {
+    $('.countdown_v2').each(function (index) {
       $(this).data().testdate = newDate;
-        console.log('TimerID:' + index, 'Showing new date: ' + newDate);
-        // clear existing countdowns
-        clearInterval(dfs.countdownv2.timerID[index]);
+      console.log('TimerID:' + index, 'Showing new date: ' + newDate);
+      // clear existing countdowns
+      clearInterval(dfs.countdownv2.timerID[index]);
 
     });
 
@@ -563,49 +590,52 @@ dfs.countdownv2 = {
 
 };
 
-dfs.updateElement = function(){
+dfs.updateElement = function () {
   var test4Element = $('#hpCarousel');
-    if(test4Element.length) {
-          $('#hpCarousel').carousel({ interval: 6000});
-          $('#hpCarousel').carousel('pause');
-        clearInterval(PollElement);
-        console.log('Carousel Ready and Initiated : ' + PollElement);
-        // start Countdowns
-          dfs.countdownv2.init();
+  if (test4Element.length) {
+    $('#hpCarousel').carousel({
+      interval: 6000
+    });
+    $('#hpCarousel').carousel('pause');
+    clearInterval(PollElement);
+    console.log('Carousel Ready and Initiated : ' + PollElement);
+    // start Countdowns
+    dfs.countdownv2.init();
 
-          // Carousel Swipe
-          (function ($) {
+    // Carousel Swipe
+    (function ($) {
 
-            var touchStartX = null;
+      var touchStartX = null;
 
-            $('.carousel').each(function () {
-                var $carousel = $(this);
-                $(this).on('touchstart', function (event) {
-                    var e = event.originalEvent;
-                    if (e.touches.length == 1) {
-                        var touch = e.touches[0];
-                        touchStartX = touch.pageX;
-                    }
-                }).on('touchmove', function (event) {
-                    var e = event.originalEvent;
-                    if (touchStartX != null) {
-                        var touchCurrentX = e.changedTouches[0].pageX;
-                        if ((touchCurrentX - touchStartX) > 60) {
-                            touchStartX = null;
-                            $carousel.carousel('prev');
-                        } else if ((touchStartX - touchCurrentX) > 60) {
-                            touchStartX = null;
-                            $carousel.carousel('next');
-                        }
-                    }
-                }).on('touchend', function () {
-                    touchStartX = null;
-                });
-            });
+      $('.carousel').each(function () {
+        var $carousel = $(this);
+        $(this).on('touchstart', function (event) {
+          var e = event.originalEvent;
+          if (e.touches.length == 1) {
+            var touch = e.touches[0];
+            touchStartX = touch.pageX;
+          }
+        }).on('touchmove', function (event) {
+          var e = event.originalEvent;
+          if (touchStartX != null) {
+            var touchCurrentX = e.changedTouches[0].pageX;
+            if ((touchCurrentX - touchStartX) > 60) {
+              touchStartX = null;
+              $carousel.carousel('prev');
+            } else if ((touchStartX - touchCurrentX) > 60) {
+              touchStartX = null;
+              $carousel.carousel('next');
+            }
+          }
+        }).on('touchend', function () {
+          touchStartX = null;
+        });
+      });
 
-          })(jQuery);
+    })(jQuery);
 
-    }
+
+  }
 }
 
 // start carousel if loaded..
@@ -613,51 +643,51 @@ var PollElement = setInterval(dfs.updateElement, 500);
 
 // Additional Handlbars Helpers
 
-    Handlebars.registerHelper("math", function(lvalue, operator, rvalue, options) {
-        lvalue = parseFloat(lvalue);
-        rvalue = parseFloat(rvalue);
+Handlebars.registerHelper("math", function (lvalue, operator, rvalue, options) {
+  lvalue = parseFloat(lvalue);
+  rvalue = parseFloat(rvalue);
 
-        return {
-            "+": lvalue + rvalue,
-            "-": lvalue - rvalue,
-            "*": lvalue * rvalue,
-            "/": lvalue / rvalue,
-            "%": lvalue % rvalue
-        }[operator];
-    });
+  return {
+    "+": lvalue + rvalue,
+    "-": lvalue - rvalue,
+    "*": lvalue * rvalue,
+    "/": lvalue / rvalue,
+    "%": lvalue % rvalue
+  } [operator];
+});
 
-    Handlebars.registerHelper("finance", function(price, local) {
-      var this_price = price.match(/([1-9])+/g);
-      if(local === 'UK') {
-        return '&pound;' + Math.floor(parseFloat((this_price[0]) / 48) * 100) / 100 + ' a month for 4 years';
+Handlebars.registerHelper("finance", function (price, local) {
+  var this_price = price.match(/([1-9])+/g);
+  if (local === 'UK') {
+    return '&pound;' + Math.floor(parseFloat((this_price[0]) / 48) * 100) / 100 + ' a month for 4 years';
+  } else {
+    return '&euro;' + Math.floor(parseFloat((this_price[0]) / 36) * 100) / 100 + ' a month for 3 years';
+  }
+
+});
+
+Handlebars.registerHelper("csv", function (str, device) {
+  var colors = str.split(',');
+  if (device === 'M') {
+    if (colors[1] !== undefined && colors[1] != false) {
+      return colors[1];
+    } else {
+      if (colors[0] !== undefined && colors[0] != false) {
+        return colors[0];
       } else {
-        return '&euro;' + Math.floor(parseFloat((this_price[0]) / 36) * 100) / 100 + ' a month for 3 years';
+        return '000000';
       }
 
-    });
+    }
+  }
 
-    Handlebars.registerHelper("csv", function(str, device) {
-      var colors = str.split(',');
-          if(device === 'M') {
-            if(colors[1] !== undefined && colors[1] != false) {
-              return colors[1];
-            } else {
-              if(colors[0] !== undefined && colors[0] != false) {
-                return colors[0];
-              } else {
-                return '000000';
-              }
-
-            }
-          }
-
-      if(device === 'D') {
-        if(colors[0] !== undefined && colors[0] != false) {
-          return colors[0];
-        } else {
-          return '000000';
-        }
-      }
-      // No Matches Return Default Black
+  if (device === 'D') {
+    if (colors[0] !== undefined && colors[0] != false) {
+      return colors[0];
+    } else {
       return '000000';
+    }
+  }
+  // No Matches Return Default Black
+  return '000000';
 });

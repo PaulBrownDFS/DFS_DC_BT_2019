@@ -1,6 +1,6 @@
 {{#with carouselslot}}
 <div class="carouselContainer">
-    <div id="hpCarousel" class="carousel slide" data-ride="carousel" data-isroi="{{roi}}">
+    <div id="hpCarousel" class="carousel slide {{#iff slides.[0].carouselVersion "==" "Late2019" }}late2019{{/iff}}" data-ride="carousel" data-isroi="{{spec.roiPrices}}">
       <!-- Indicators -->
       <ol class="carousel-indicators">
         {{#each slides}}
@@ -11,23 +11,20 @@
       <!-- Wrapper for slides -->
       <div class="carousel-inner">
         {{#each slides}}
-          <div class="item {{#if @first}} active {{/if}} slideIndex{{inc @index}}" data-roi="{{../roi}}">
+          <div class="item {{#if @first}} active {{/if}} slideIndex{{inc @index}}" data-roi="{{../spec.roiPrices}}">
             <a href="{{productURL}}">
               <picture>
                 <!-- WebP -->
+                <source type="image/webp" media="(max-width: 1365px)" srcset="https://{{image.defaultHost}}/i/dfs/?layer0=[canvas=1024,488]&layer1=[src=/i/dfs/{{productImage.name}}&{{#if desktopMImageCrop}}{{desktopMImageCrop}}&{{/if}}{{#if productImageFullWidth}}w=1366&anchor=l&left=0{{else}}w=1024&h=619&anchor=l&left=342{{/if}}]{{#if image.name}}&layer2=[/i/dfs/{{image.name}}&left=0&h=100%]{{/if}}{{#if sidebarCharacter.name}}&layer3=[/i/dfs/{{sidebarCharacter.name}}&{{desktopCharacterCrop}}&{{desktopCharacterSize}}&bottom={{sideBarCBottom}}&left={{sideBarCLeft}}&anchor=bl]{{/if}}{{#if pricingImage.name}}&layer4=[src=/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{pricingImage.name}}&anchor=br&right=24&bottom=24]{{/if}}{{#if EspotImage.name}}&layer5=[src=/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{EspotImage.name}}&anchor=tr&right={{EspotImage_right}}&top={{EspotImage_top}}]{{/if}}&fmt.jpeg.chroma=1,1,1&w=1024&qlt={{#if desktopslidequality}}{{desktopslidequality}}{{else}}60{{/if}}&fmt.jpeg.interlaced=true&fmt=webp">
 
-                <source type="image/webp" media="(max-width: 1365px)" srcset="https://{{image.defaultHost}}/i/dfs/?layer0=[canvas=1024,488]&layer1=[src=/i/dfs/{{productImage.name}}&{{#if desktopMImageCrop}}{{desktopMImageCrop}}&{{/if}}{{#if productImageFullWidth}}w=1366&anchor=l&left=0{{else}}w=1024&h=619&anchor=l&left=342{{/if}}]{{#if image.name}}&layer2=[/i/dfs/{{image.name}}&left=0&h=100%]{{/if}}{{#if sidebarCharacter.name}}&layer3=[/i/dfs/{{sidebarCharacter.name}}&{{desktopCharacterCrop}}&{{desktopCharacterSize}}&bottom={{sideBarCBottom}}&left={{sideBarCLeft}}&anchor=bl]{{/if}}{{#if pricingImage.name}}&layer4=[src=/i/dfs/{{#if ../roi }}ROI_{{/if}}{{pricingImage.name}}&anchor=br&right=24&bottom=24]{{/if}}{{#if EspotImage.name}}&layer5=[src=/i/dfs/{{#if ../roi }}ROI_{{/if}}{{EspotImage.name}}&anchor=tr&right={{EspotImage_right}}&top={{EspotImage_top}}]{{/if}}&fmt.jpeg.chroma=1,1,1&w=1024&qlt={{#if desktopslidequality}}{{desktopslidequality}}{{else}}60{{/if}}&fmt.jpeg.interlaced=true&fmt=webp">
-
-
-                <source type="image/webp" media="(min-width: 1366px)" srcset="https://{{image.defaultHost}}/i/dfs/?layer0=[canvas=1366,619]&layer1=[src=/i/dfs/{{productImage.name}}&{{#if desktopMImageCrop}}{{desktopMImageCrop}}&{{/if}}{{#if productImageFullWidth}}w=1366&h=619&anchor=l&left=0{{else}}w=1024&h=619&anchor=l&left=342{{/if}}]{{#if image.name}}&layer2=[/i/dfs/{{image.name}}&left=0&h=100%]{{/if}}{{#if sidebarCharacter.name}}&layer3=[/i/dfs/{{sidebarCharacter.name}}&{{desktopCharacterCrop}}&{{desktopCharacterSize}}&bottom={{sideBarCBottom}}&left={{sideBarCLeft}}&anchor=bl]{{/if}}{{#if pricingImage.name}}&layer4=[src=/i/dfs/{{#if ../roi }}ROI_{{/if}}{{pricingImage.name}}&anchor=br&right=24&bottom=24]{{/if}}{{#if EspotImage.name}}&layer5=[src=/i/dfs/{{#if ../roi }}ROI_{{/if}}{{EspotImage.name}}&anchor=tr&right={{EspotImage_right}}&top={{EspotImage_top}}]{{/if}}&qlt={{#if desktopslidequality}}{{desktopslidequality}}{{else}}60{{/if}}&fmt.jpeg.chroma=1,1,1&w=1366&fmt.jpeg.interlaced=true&fmt=webp">
+                <source type="image/webp" media="(min-width: 1366px)" srcset="https://{{image.defaultHost}}/i/dfs/?layer0=[canvas=1366,619]&layer1=[src=/i/dfs/{{productImage.name}}&{{#if desktopMImageCrop}}{{desktopMImageCrop}}&{{/if}}{{#if productImageFullWidth}}w=1366&h=619&anchor=l&left=0{{else}}w=1024&h=619&anchor=l&left=342{{/if}}]{{#if image.name}}&layer2=[/i/dfs/{{image.name}}&left=0&h=100%]{{/if}}{{#if sidebarCharacter.name}}&layer3=[/i/dfs/{{sidebarCharacter.name}}&{{desktopCharacterCrop}}&{{desktopCharacterSize}}&bottom={{sideBarCBottom}}&left={{sideBarCLeft}}&anchor=bl]{{/if}}{{#if pricingImage.name}}&layer4=[src=/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{pricingImage.name}}&anchor=br&right=24&bottom=24]{{/if}}{{#if EspotImage.name}}&layer5=[src=/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{EspotImage.name}}&anchor=tr&right={{EspotImage_right}}&top={{EspotImage_top}}]{{/if}}&qlt={{#if desktopslidequality}}{{desktopslidequality}}{{else}}60{{/if}}&fmt.jpeg.chroma=1,1,1&w=1366&fmt.jpeg.interlaced=true&fmt=webp">
 
                 <!-- Jpg -->
+                <source media="(max-width: 1365px)" srcset="https://{{image.defaultHost}}/i/dfs/?layer0=[canvas=1024,488]&layer1=[src=/i/dfs/{{productImage.name}}&{{#if desktopMImageCrop}}{{desktopMImageCrop}}&{{/if}}{{#if productImageFullWidth}}w=1366&anchor=l&left=0{{else}}w=1024&h=619&anchor=l&left=342{{/if}}]{{#if image.name}}&layer2=[/i/dfs/{{image.name}}&left=0&h=100%]{{/if}}{{#if sidebarCharacter.name}}&layer3=[/i/dfs/{{sidebarCharacter.name}}&{{desktopCharacterCrop}}&{{desktopCharacterSize}}&bottom={{sideBarCBottom}}&left={{sideBarCLeft}}&anchor=bl]{{/if}}{{#if pricingImage.name}}&layer4=[src=/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{pricingImage.name}}&anchor=br&right=24&bottom=24]{{/if}}{{#if EspotImage.name}}&layer5=[src=/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{EspotImage.name}}&anchor=tr&right={{EspotImage_right}}&top={{EspotImage_top}}]{{/if}}&fmt.jpeg.chroma=1,1,1&w=1024&qlt={{#if desktopslidequality}}{{desktopslidequality}}{{else}}60{{/if}}">
 
-                <source media="(max-width: 1365px)" srcset="https://{{image.defaultHost}}/i/dfs/?layer0=[canvas=1024,488]&layer1=[src=/i/dfs/{{productImage.name}}&{{#if desktopMImageCrop}}{{desktopMImageCrop}}&{{/if}}{{#if productImageFullWidth}}w=1366&anchor=l&left=0{{else}}w=1024&h=619&anchor=l&left=342{{/if}}]{{#if image.name}}&layer2=[/i/dfs/{{image.name}}&left=0&h=100%]{{/if}}{{#if sidebarCharacter.name}}&layer3=[/i/dfs/{{sidebarCharacter.name}}&{{desktopCharacterCrop}}&{{desktopCharacterSize}}&bottom={{sideBarCBottom}}&left={{sideBarCLeft}}&anchor=bl]{{/if}}{{#if pricingImage.name}}&layer4=[src=/i/dfs/{{#if ../roi }}ROI_{{/if}}{{pricingImage.name}}&anchor=br&right=24&bottom=24]{{/if}}{{#if EspotImage.name}}&layer5=[src=/i/dfs/{{#if ../roi }}ROI_{{/if}}{{EspotImage.name}}&anchor=tr&right={{EspotImage_right}}&top={{EspotImage_top}}]{{/if}}&fmt.jpeg.chroma=1,1,1&w=1024&qlt={{#if desktopslidequality}}{{desktopslidequality}}{{else}}60{{/if}}">
+                <source media="(min-width: 1366px)" srcset="https://{{image.defaultHost}}/i/dfs/?layer0=[canvas=1366,619]&layer1=[src=/i/dfs/{{productImage.name}}&{{#if desktopMImageCrop}}{{desktopMImageCrop}}&{{/if}}{{#if productImageFullWidth}}w=1366&h=619&anchor=l&left=0{{else}}w=1024&h=619&anchor=l&left=342{{/if}}]{{#if image.name}}&layer2=[/i/dfs/{{image.name}}&left=0&h=100%]{{/if}}{{#if sidebarCharacter.name}}&layer3=[/i/dfs/{{sidebarCharacter.name}}&{{desktopCharacterCrop}}&{{desktopCharacterSize}}&bottom={{sideBarCBottom}}&left={{sideBarCLeft}}&anchor=bl]{{/if}}{{#if pricingImage.name}}&layer4=[src=/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{pricingImage.name}}&anchor=br&right=24&bottom=24]{{/if}}{{#if EspotImage.name}}&layer5=[src=/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{EspotImage.name}}&anchor=tr&right={{EspotImage_right}}&top={{EspotImage_top}}]{{/if}}&qlt={{#if desktopslidequality}}{{desktopslidequality}}{{else}}60{{/if}}&fmt.jpeg.chroma=1,1,1">
 
-                <source media="(min-width: 1366px)" srcset="https://{{image.defaultHost}}/i/dfs/?layer0=[canvas=1366,619]&layer1=[src=/i/dfs/{{productImage.name}}&{{#if desktopMImageCrop}}{{desktopMImageCrop}}&{{/if}}{{#if productImageFullWidth}}w=1366&h=619&anchor=l&left=0{{else}}w=1024&h=619&anchor=l&left=342{{/if}}]{{#if image.name}}&layer2=[/i/dfs/{{image.name}}&left=0&h=100%]{{/if}}{{#if sidebarCharacter.name}}&layer3=[/i/dfs/{{sidebarCharacter.name}}&{{desktopCharacterCrop}}&{{desktopCharacterSize}}&bottom={{sideBarCBottom}}&left={{sideBarCLeft}}&anchor=bl]{{/if}}{{#if pricingImage.name}}&layer4=[src=/i/dfs/{{#if ../roi }}ROI_{{/if}}{{pricingImage.name}}&anchor=br&right=24&bottom=24]{{/if}}{{#if EspotImage.name}}&layer5=[src=/i/dfs/{{#if ../roi }}ROI_{{/if}}{{EspotImage.name}}&anchor=tr&right={{EspotImage_right}}&top={{EspotImage_top}}]{{/if}}&qlt={{#if desktopslidequality}}{{desktopslidequality}}{{else}}60{{/if}}&fmt.jpeg.chroma=1,1,1">
-
-                <img src="https://{{image.defaultHost}}/i/dfs/?layer0=[canvas=1366,619]&layer1=[src=/i/dfs/{{productImage.name}}&{{#if desktopMImageCrop}}{{desktopMImageCrop}}&{{/if}}{{#if productImageFullWidth}}w=1366&h=619&anchor=l&left=0{{else}}w=1024&h=619&anchor=l&left=342{{/if}}]{{#if image.name}}&layer2=[/i/dfs/{{image.name}}&left=0&h=100%]{{/if}}{{#if sidebarCharacter.name}}&layer3=[/i/dfs/{{sidebarCharacter.name}}&{{desktopCharacterCrop}}&{{desktopCharacterSize}}&bottom={{sideBarCBottom}}&left={{sideBarCLeft}}&anchor=bl]{{/if}}{{#if pricingImage.name}}&layer4=[src=/i/dfs/{{#if ../roi }}ROI_{{/if}}{{pricingImage.name}}&anchor=br&right=24&bottom=24]{{/if}}{{#if EspotImage.name}}&layer5=[src=/i/dfs/{{#if ../roi }}ROI_{{/if}}{{EspotImage.name}}&anchor=tr&right={{EspotImage_right}}&top={{EspotImage_top}}]{{/if}}&qlt={{#if desktopslidequality}}{{desktopslidequality}}{{else}}60{{/if}}&fmt.jpeg.chroma=1,1,1">
+                <img src="https://{{image.defaultHost}}/i/dfs/?layer0=[canvas=1366,619]&layer1=[src=/i/dfs/{{productImage.name}}&{{#if desktopMImageCrop}}{{desktopMImageCrop}}&{{/if}}{{#if productImageFullWidth}}w=1366&h=619&anchor=l&left=0{{else}}w=1024&h=619&anchor=l&left=342{{/if}}]{{#if image.name}}&layer2=[/i/dfs/{{image.name}}&left=0&h=100%]{{/if}}{{#if sidebarCharacter.name}}&layer3=[/i/dfs/{{sidebarCharacter.name}}&{{desktopCharacterCrop}}&{{desktopCharacterSize}}&bottom={{sideBarCBottom}}&left={{sideBarCLeft}}&anchor=bl]{{/if}}{{#if pricingImage.name}}&layer4=[src=/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{pricingImage.name}}&anchor=br&right=24&bottom=24]{{/if}}{{#if EspotImage.name}}&layer5=[src=/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{EspotImage.name}}&anchor=tr&right={{EspotImage_right}}&top={{EspotImage_top}}]{{/if}}&qlt={{#if desktopslidequality}}{{desktopslidequality}}{{else}}60{{/if}}&fmt.jpeg.chroma=1,1,1">
               </picture>
 
               <div class="bannerTextContainer {{countdownClassName}}{{#if hasCountdown}} carCountdown{{/if}}" data-messageid=slide_{{inc @index}}>
@@ -40,7 +37,7 @@
                         data-daterange3="{{textVariance3}}"
                         data-daterange4="{{textVariance4}}"
                         data-hidefinalmessage="{{#if hideFinalMessage}}true{{else}}false{{/if}}"
-                        data-testdate="">
+                        data-testdate="{{../../testDate}}">
                     <h6 class="cdHeader"><!-- DEFAULT HEADER TEXT--></h6>
                       <section class="timer {{#if hasCountdown}} showCountdown{{else}}hideCountdown{{/if}}">
                         <img src="//dfs.a.bigcontent.io/v1/static/loading_please_wait?v30" alt="loading..">
@@ -53,6 +50,30 @@
                 <!-- END:: V2 CountDown (PB) July 2nd 2018-->
               </div>
             </a>
+            {{#iff carouselVersion "==" "Late2019" }}
+            
+            <div class="productDetail _label_ {{priceLabelStyle}}">
+              <div class="label_left">
+                <h5 class="offer_price">{{priceLabel.[0]}}<span>{{priceLabel.[1]}}</span>{{priceLabel.[3]}}</h5>
+              </div>
+            
+              <div class="label_middle ">
+                <h4 class="product_title">{{{_title}}} <span>{{priceLabel.[2]}}</span></h4>
+              </div>
+            
+              <div class="label_right_finance">
+                <p class="additional_pricing_details">
+                  <span>{{financeArray.[0]}}</span>{{financeArray.[2]}}<span></span>{{financeArray.[1]}}</p>
+              </div>
+            
+              {{#if priceLabel.[5]}}
+              <div class="available_colours">
+                <img src="https://images.dfs.co.uk/i/dfs/{{priceLabel.[5]}}/colour_swatches?qlt=100" alt="{{priceLabel.[5]}}">
+              </div>
+            </div>
+            {{/if}}
+            {{/iff}}
+
             {{#if EspotImage2.name }}
             <div class="linkableRoundel2">
               {{#if espot2URL }}
@@ -61,25 +82,22 @@
               <picture>
                 <!-- webp -->
 
-
-
                   <!-- 1024 width roundel 2-->
-                  <source type="image/webp" media="(max-width: 1365px)" srcset="//images.dfs.co.uk/i/dfs/{{#if ../roi }}ROI_{{/if}}{{EspotImage2.name}}?w=80%&qlt=100&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp" />
+                  <source type="image/webp" media="(max-width: 1365px)" srcset="//images.dfs.co.uk/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{EspotImage2.name}}?w=80%&qlt=100&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp" />
 
                   <!-- 1366 width roundel 2-->
-                    <source type="image/webp" media="(min-width: 1366px)" srcset="//images.dfs.co.uk/i/dfs/{{#if ../roi }}ROI_{{/if}}{{EspotImage2.name}}?qlt=90&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp" />
+                    <source type="image/webp" media="(min-width: 1366px)" srcset="//images.dfs.co.uk/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{EspotImage2.name}}?qlt=90&fmt.jpeg.chroma=1,1,1&fmt.jpeg.interlaced=true&fmt=webp" />
 
                 <!-- Jpg -->
 
-
                   <!-- 1024 width roundel 2-->
 
-                    <source media="(max-width: 1365px)" srcset="//images.dfs.co.uk/i/dfs/{{#if ../roi }}ROI_{{/if}}{{EspotImage2.name}}?w=80%&qlt=100" />
+                    <source media="(max-width: 1365px)" srcset="//images.dfs.co.uk/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{EspotImage2.name}}?w=80%&qlt=100" />
 
                   <!-- 1366 width roundel 2-->
-                    <source media="(min-width: 1366px)" srcset="//images.dfs.co.uk/i/dfs/{{#if ../roi }}ROI_{{/if}}{{EspotImage2.name}}?qlt=90" />
+                    <source media="(min-width: 1366px)" srcset="//images.dfs.co.uk/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{EspotImage2.name}}?qlt=90" />
 
-                  <img src="//images.dfs.co.uk/i/dfs/{{#if ../roi }}ROI_{{/if}}{{EspotImage2.name}}?w=80%&qlt=100" alt ="{{EspotImage2.name}}"/>
+                  <img src="//images.dfs.co.uk/i/dfs/{{#if ../spec.roiPrices }}ROI_{{/if}}{{EspotImage2.name}}?w=80%&qlt=100" alt ="{{EspotImage2.name}}"/>
               </picture>
             {{#if espot2URL }}
               </a>
@@ -97,13 +115,12 @@
       </a>
       <a class="right carousel-control" href="#hpCarousel" data-slide="next">
         <span></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only">Next</span>                                                                       
       </a>
     </div>
   </div>
-
   <style>
-  /*  13th June 2018 v2 */
+  /*  NOV  2019 v1 */
   .uk, .roi {
     text-align: center;
     font-size: 14px;
@@ -133,7 +150,7 @@
     top: {{EspotImage2_top}}px ;
     {{#if anchorDEspot2Left}}left:{{else}}right:{{/if}} {{EspotImage2_right}}px;
   }
-
+  
   .slideIndex{{inc @index}} .countdown_v2.HPcd-default.nonCDText h6.cdHeader {
     font-size: {{#if textAFontSize}}{{textAFontSize}}{{else}}20{{/if}}px !important;
     line-height: {{#if textAFontSize}}{{textAFontSize}}{{else}}20{{/if}}px !important;
@@ -168,21 +185,10 @@
       font-size:{{#if textBFontSize}}{{math textBFontSize "-" 5}}{{else}}14{{/if}}px !important;
       line-height:{{#if textBFontSize}}{{math textBFontSize "-" 5}}{{else}}14{{/if}}px !important;
     }
-
+    
   }
-  @media (max-width: 1023px) {
-
-    {{#if espot2mobile}}
-      .item.slideIndex{{inc @index}} .linkableRoundel2 {
-        display:none;
-      }
-    {{else}}
-      .item.slideIndex{{inc @index}} .linkableRoundel2 {
-        display:none;
-      }
-    {{/if}}
-  }
-  {{/each}}
+  
+    {{/each}}
 
   </style>
 {{/with}}

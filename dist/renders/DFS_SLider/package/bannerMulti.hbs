@@ -168,7 +168,7 @@
   <div class="uk">Showing UK Carousel </div>
   {{/if}}
   <style>
-  /*  13th June 2018 v2 */
+  /*  Nov 2019 v1.1 */
   .uk, .roi {
     text-align: center;
     font-size: 14px;
@@ -256,6 +256,16 @@
       }
     {{/if}}
 
+    {{#if showIcons }}
+    div#hpCarousel.late2019  .item.slideIndex{{inc @index}} .availability {
+      display:block;
+    }
+    {{/if}}
+
+  }
+  {{/each}}
+
+  @media (max-width: 1023px) {
    div#hpCarousel.late2019 .carousel-inner {
         width: 540px;
         margin: auto;
@@ -365,6 +375,5 @@
       line-height: 21px !important;
   }
   }
-  {{/each}}
 
   </style>

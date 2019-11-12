@@ -1,4 +1,4 @@
-@media (max-width: 1023px) {
+
   /* Mobile Css Styles*/
 
   .js_banner_wrap .item {
@@ -16,9 +16,6 @@
   }
 
   .bannerTextContainer {
-    width: 260px;
-    text-align: center;
-    position: absolute;
     min-height: 64px;
   }
 
@@ -81,9 +78,7 @@
     background-color: #222;
   }
 
-}
 
-@media (max-width: 1023px) {
   .countdownContainer {
     width: 190px;
   }
@@ -97,9 +92,9 @@
     font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif !important;
     font-weight: 300;
   }
-}
 
-@media (max-width: 1023px) {
+
+
   .countdownContainer.HPcd_WS2Large .timer {
     width: 210px;
     height: 38px;
@@ -134,10 +129,7 @@
     display: block;
     color: #fff;
   }
-}
 
-
-@media (max-width: 1023px) {
   .countdownContainer.HPcd_WS2Special .timer {
     width: 210px;
     height: 45px;
@@ -228,4 +220,22 @@
 #hpCarousel.late2019 .carousel-indicators li {
   box-shadow: inset 1px 1px 3px #777;
 }
+
+.carousel-control.left,
+.carousel-control.right {
+  top: 207.5px;
+  -webkit-transform: scale(0.75);
+  transform: scale(0.75);
 }
+
+.bannerTextContainer {
+  width: 192px;
+}
+
+div#hpCarousel.late2019 .productDetail._mobile_ h4.product_title,
+div#hpCarousel.late2019 .productDetail._mobile_ h5.offer_price,
+div#hpCarousel.late2019 .productDetail._mobile_ p {
+  margin:0;
+}
+
+ 

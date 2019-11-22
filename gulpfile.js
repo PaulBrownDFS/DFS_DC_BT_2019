@@ -380,8 +380,8 @@ gulp.task('renders-files-copy', function () {
         .src([
             'src/renders/**/visualisation.html',
             'src/renders/**/preview.html',
-            'src/renders/**/uat2preview.html',
-            'src/renders/**/live_hpCarousel.html',
+            'src/renders/**/preview_uat1.html',
+            'src/renders/**/preview_uat1_mobile.html',
             'src/renders/**/templates/*.html',
             'src/renders/**/js/*.js'
         ])

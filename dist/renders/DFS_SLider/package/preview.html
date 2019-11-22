@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Home Page Desktop Carousel</title>
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="DFS_SLider.min.css?vNov7" />
+    <link rel="stylesheet" href="DFS_SLider.min.css?vNov15" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
     <style>
@@ -29,7 +29,7 @@
 
 <script>
 // Visual Loader
-function getQueryVar(variable) {
+function ampGetQueryValue(variable) {
         var query = window.location.search.substring(1);
         var vars = query.split('&');
         for (var i = 0; i < vars.length; i++) {
@@ -38,7 +38,9 @@ function getQueryVar(variable) {
                 return decodeURIComponent(pair[1]);
             }
         }
-        return false;
+       if(variable !== 'roi'){
+       return 'w59a4sqnbu301ot4nys8p4qo9-gvzrfgnzc-'+ new Date().getTime() +'.staging.bigcontent.io';
+       }
     }
 
     Handlebars.partials = AmpCa.templates;
@@ -47,7 +49,7 @@ function getQueryVar(variable) {
     var cacheBuster = Math.random().toString(36).substr(2, 12);
 
     AmpCa.utils.getCaData({
-      url: "//" + getQueryVar('api')
+      url: "//" + ampGetQueryValue('api')
                                   + "/cms/content/query?fullBodyObject=true&query="
                                   + encodeURIComponent(JSON.stringify({"sys.iri":"http://content.cms.amplience.com/" + "c9363fde-aaa0-4b8f-850b-b1ce0005c732"}))
                                   + "&scope=tree&store=dfs&cacheBuster=" + cacheBuster,
@@ -55,7 +57,7 @@ function getQueryVar(variable) {
         callback: function (data) {
             // data[0].renderTypes = renderTypes;
             // get preview date
-            data[0].previewDate = getQueryVar('api').match(/\d{13,}/);
+            data[0].previewDate = ampGetQueryValue('api').match(/\d{13,}/);
             if(data[0].previewDate) {
               var this_timeStamp = data[0].previewDate[0];
               var dateString = new Date(Number(this_timeStamp));
@@ -66,9 +68,16 @@ function getQueryVar(variable) {
               data[0].testDate = "";
             }
 
-            data[0].spec = {"roiPrices": $('.js_banner_wrap').data('roi'), "testDate" : data[0].testDate};
-            if(getQueryVar('roi')){ data[0].carouselslot.roi = getQueryVar('roi'); } else {
-              data[0].carouselslot.roi = $('.js_banner_wrap').data('roi');
+            data[0].spec = {"testDate" : data[0].testDate};
+            var isROIparam = window.ampGetQueryValue('roi');
+
+            if(isROIparam){
+            data[0].carouselslot.roi = true
+            data[0].spec .roiPrices = true;
+
+            } else {
+            data[0].carouselslot.roi = $('.js_banner_wrap').data('roi');
+            data[0].spec .roiPrices = $('.js_banner_wrap').data('roi');
             }
 
             // setup  pricing labels for each slide

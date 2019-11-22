@@ -274,6 +274,7 @@ div#hpCarousel .availability {
 
     & h4.product_title {
       font-weight: 300;
+      margin: 0;
     }
   }
 
@@ -282,6 +283,7 @@ div#hpCarousel .availability {
     width: 92px;
     text-align: center;
     padding: 10px 5px;
+    margin:0;
     box-sizing: border-box;
     color: #fff;
     font-family: HelveticaNeueW01-45Ligh, Arial, sans-serif;
@@ -296,10 +298,10 @@ div#hpCarousel .availability {
     display: block;
   }
 
-  & .label_middle {
+  & .label_middle h4 {
     font-family: "HelveticaNeueW02-55Roma", Arial, sans-serif;
     font-size: 12px;
-    line-height: 12px;
+    line-height: 14px;
     color: #193568;
 
     & strong {
@@ -313,14 +315,71 @@ div#hpCarousel .availability {
   & h5.offer_price {
     font-size: 14px;
     margin-top: 5px;
+    color:#000;
     font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
-    font-weight: 300;
+    font-weight: 900;
 
     & span {
       display: block;
       font-size: 36px;
       line-height: 36px;
     }
+  }
+}
+
+@media (max-width: 1365px) {
+  // UK-1 Label
+  .productDetail._label_.UK-1 {
+    width: 280px;
+    height: 90px;
+
+    &  .label_left {
+      width: 100px;
+      height: 67px;
+    }
+   &  h5.offer_price {
+      font-size: 10px;
+    }
+    & h5.offer_price span {
+      font-size: 30px;
+      line-height: 33px;
+    }
+    &  .label_middle {
+      width: 120px;
+      height:61px;
+      padding: 5px;
+      left: 100px;
+    }
+    & .label_middle h4 strong {
+      line-height: 22px;
+      font-size: 16px;
+    }
+    & .label_middle h4 {
+      font-size: 10px;
+      line-height: 12px;
+    }
+    &  .label_right_finance {
+      width: 180px;
+      height: 67px;
+    }
+    &  .label_right_finance p {
+      width: 60px;
+      padding: 4px;
+      font-size: 11px;
+      line-height: 14px;
+      position: relative;
+      top: 5px;
+    }
+   & .label_right_finance p span {
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+  }
+  .available_colours img {
+    width: 75%;
+    position: relative;
+    top: -3px;
   }
 }
 

@@ -238,4 +238,128 @@ div#hpCarousel.late2019 .productDetail._mobile_ p {
   margin:0;
 }
 
+div#hpCarousel.late2019 .carousel-inner {
+  width: 540px;
+  margin: auto;
+}
+
+div#hpCarousel.late2019 .left.carousel-control,
+div#hpCarousel.late2019 .right.carousel-control {
+  background-position: 0px -124px;
+  height: 68px;
+  width: 48px;
+  transform: scale(.5);
+}
+
+div#hpCarousel.late2019 .carousel-inner {
+  height: 710px;
+}
+
+div#hpCarousel.late2019 .right.carousel-control {
+  background-position: -15px -124px;
+}
+
+div#hpCarousel.late2019 .carousel-control.right {
+  left: 565px;
+}
+
+div#hpCarousel.late2019 .availability {
+  min-height: 40px;
+}
+
+div#hpCarousel.late2019 .availability p {
+  font-family: Arial, Verdana, Helvetica, sans-serif;
+  font-size: 14px !important;
+}
+
+div#hpCarousel.late2019 .availability img {
+  padding: 0 5px 0 0;
+  position: relative;
+  top: 2px;
+}
+
+div#hpCarousel.late2019 .availability div {
+  width: 50%;
+  float: left;
+  padding: 0 5px;
+  box-sizing: border-box;
+}
+
+div#hpCarousel.late2019 .availability .sizes {
+  text-align: right;
+}
+
+div#hpCarousel.late2019 .productDetail._mobile_ {
+  text-align: center;
+  font-family: "HelveticaNeueW01-45Ligh", Arial, sans-serif;
+  color: #666;
+  display: block;
+  line-height: 1 !important;
+}
+
+div#hpCarousel.late2019 .productDetail._label_ {
+  display: none;
+}
+
+div#hpCarousel.late2019 .productDetail._mobile_ h4 strong {
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  color: #666;
+}
+
+div#hpCarousel.late2019 .productDetail._mobile_ h4.product_title {
+  font-size: 20px;
+  font-family: "HelveticaNeueW01-45Ligh", Arial, sans-serif;
+  font-weight: 100;
+  padding: 0 0 7.5px;
+}
+
+div#hpCarousel.late2019 .productDetail._mobile_ h5.offer_price {
+  font-size: 29px;
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  color: #c24349;
+  padding: 0 0 10px;
+}
+
+div#hpCarousel.late2019 .productDetail._mobile_ p {
+  font-size: 18px;
+}
+
+div#hpCarousel.late2019 p.additional_pricing_details span {
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  color: #c24349;
+  font-weight: 900;
+}
+
+div#hpCarousel.late2019 .carousel-indicators .active {
+  background-color: #444;
+}
+
+div#hpCarousel.late2019 .carousel-indicators li {
+  background-color: #ccc;
+}
+
+div#hpCarousel.late2019 .carousel_cardlist_button {
+  width: auto;
+  margin: 17.5px auto;
+}
+
+div#hpCarousel.late2019 .carousel_cardlist_button p {
+  width: auto;
+  display: inline-block;
+  padding: 8px 32px;
+  text-align: center;
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  font-weight: 900;
+  margin: 0 auto;
+  line-height: 21px !important;
+}
+
+.carouselContainer {
+  width: 600px;
+}
+
+.carousel-control.right {
+  background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_next_no_dis_v2);
+  left: 550px;
+}
  

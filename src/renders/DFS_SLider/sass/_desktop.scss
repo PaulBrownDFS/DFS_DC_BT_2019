@@ -316,7 +316,7 @@ div#hpCarousel .availability {
     font-size: 14px;
     margin-top: 5px;
     color:#000;
-    font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+    font-family:  Arial, sans-serif;
     font-weight: 900;
 
     & span {
@@ -419,6 +419,9 @@ div#hpCarousel .availability {
 
     & h4.product_title {
       font-weight: 300;
+      margin:0;
+      font-size: 12px;
+      line-height:14px;
     }
   }
 
@@ -450,8 +453,9 @@ div#hpCarousel .availability {
   & h5.offer_price {
     font-size: 14px;
     margin-top: 5px;
-    font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
-    font-weight: 300;
+    font-family:  Arial, sans-serif;
+    font-weight: 700;
+    color:#000;
 
     & span {
       display: block;
@@ -502,6 +506,9 @@ div#hpCarousel .availability {
 
     & h4.product_title {
       font-weight: 300;
+      margin:0;
+      font-size: 12px;
+      line-height:14px;
     }
   }
 
@@ -533,13 +540,15 @@ div#hpCarousel .availability {
   & h5.offer_price {
     font-size: 14px;
     margin-top: 5px;
-    font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+    font-family:  Arial, sans-serif;
     font-weight: 300;
     color: #fff;
 
     & span {
       display: block;
       font-size: 36px;
+       font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+       font-weight: 700;
       line-height: 36px;
     }
   }

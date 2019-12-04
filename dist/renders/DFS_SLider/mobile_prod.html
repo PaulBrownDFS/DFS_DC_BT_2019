@@ -10,12 +10,22 @@
 <section>
   <!-- New DC Carousel Slot NOV 2018-->
   <section>
-    <div class="js_banner_wrap" data-slotid="adaa2728-d1be-4947-9145-b422eb2f5951" data-roi="false" data-template="bannerMulti_m" data-maxslides="4"></div>
+    <div id="sliderWrapper" class="js_banner_wrap" data-slotid="adaa2728-d1be-4947-9145-b422eb2f5951" data-roi="false" data-template="bannerMulti_m" data-maxslides="4"></div>
   </section>
 
   <!-- DC_Carousel css -->
   <link rel="stylesheet" href="prod/mobile_shim.css">
   <!-- <link rel="stylesheet" href="https://c1.adis.ws/c/dfs/Desktop_DFS_SLider.min_march6th?css"> -->
+
+  <script>
+    // get content from URL if contentid = present in first param
+    window.params = window.location.search;
+    if (params) {
+      var newContent = params.split('=')[1];
+      var wrapper = document.getElementById('sliderWrapper');
+      wrapper.dataset.slotid = newContent;
+    }
+  </script>
 
 
   <!-- Latest Handlebars Carousel Precompiled Template -->

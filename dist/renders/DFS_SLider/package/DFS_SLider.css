@@ -346,7 +346,7 @@ div#hpCarousel .availability {
 }
 
 .productDetail._label_.UK-1 .label_middle h4 {
-  font-family: "HelveticaNeueW02-55Roma", Arial, sans-serif;
+  font-family: Arial, sans-serif;
   font-size: 12px;
   line-height: 14px;
   color: #193568;
@@ -392,7 +392,7 @@ div#hpCarousel .availability {
   .productDetail._label_.UK-1 .label_middle {
     width: 120px;
     height: 61px;
-    padding: 5px;
+    padding: 5px 0px 5px 5px;
     left: 100px;
   }
   .productDetail._label_.UK-1 .label_middle h4 strong {
@@ -400,7 +400,7 @@ div#hpCarousel .availability {
     font-size: 16px;
   }
   .productDetail._label_.UK-1 .label_middle h4 {
-    font-size: 10px;
+    font-size: 11px;
     line-height: 12px;
   }
   .productDetail._label_.UK-1 .label_right_finance {

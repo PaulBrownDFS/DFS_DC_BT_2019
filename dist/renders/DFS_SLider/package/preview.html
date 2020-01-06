@@ -17,7 +17,8 @@
 </head>
 <body>
 <!-- New DC Carousel PB -->
-<div style="margin-top:15px;" class="js_banner_wrap" data-slotid="c9363fde-aaa0-4b8f-850b-b1ce0005c732" data-roi="false"></div>
+<div style="margin-top:15px;" class="js_banner_wrap" data-slotid="eea5fda2-75d8-41ca-b4bb-25cf134fc4d6" data-roi="false"></div>
+<!-- <div style="margin-top:15px;" class="js_banner_wrap" data-slotid="c9363fde-aaa0-4b8f-850b-b1ce0005c732" data-roi="false"></div> -->
 <!-- <div style="margin-top:15px;" class="js_banner_wrap" data-slotid="89a3f14d-4b0a-4345-8ede-28c17e300175" data-roi="true"></div> -->
 <!-- New DC Carousel PB -->
 
@@ -30,6 +31,16 @@
 
 <script>
 // Visual Loader
+
+// Visual Loader
+if(!dfs) {
+var dfs = {};
+}
+
+dfs.HPSlider = {
+slotID: $('.js_banner_wrap').data('slotid')
+}
+
 function ampGetQueryValue(variable) {
         var query = window.location.search.substring(1);
         var vars = query.split('&');
@@ -52,7 +63,7 @@ function ampGetQueryValue(variable) {
     AmpCa.utils.getCaData({
       url: "//" + ampGetQueryValue('api')
                                   + "/cms/content/query?fullBodyObject=true&query="
-                                  + encodeURIComponent(JSON.stringify({"sys.iri":"http://content.cms.amplience.com/" + "c9363fde-aaa0-4b8f-850b-b1ce0005c732"}))
+                                  + encodeURIComponent(JSON.stringify({"sys.iri":"http://content.cms.amplience.com/" + dfs.HPSlider.slotID}))
                                   + "&scope=tree&store=dfs&cacheBuster=" + cacheBuster,
 
         callback: function (data) {
@@ -69,16 +80,14 @@ function ampGetQueryValue(variable) {
               data[0].testDate = "";
             }
 
-            data[0].spec = {"testDate" : data[0].testDate};
+            data[0].carouselslot.spec = {};
             var isROIparam = window.ampGetQueryValue('roi');
 
             if(isROIparam){
-            data[0].carouselslot.roi = true
-            data[0].spec .roiPrices = true;
+            data[0].carouselslot.spec.roi = true;
 
             } else {
-            data[0].carouselslot.roi = $('.js_banner_wrap').data('roi');
-            data[0].spec .roiPrices = $('.js_banner_wrap').data('roi');
+            data[0].carouselslot.spec.roi = $('.js_banner_wrap').data('roi');
             }
 
             // setup  pricing labels for each slide
@@ -92,13 +101,13 @@ function ampGetQueryValue(variable) {
                  var p = data[0].carouselslot.slides[s].priceLabel[1].split(';');
 
                  if(p.length > 1) {
-                 data[0].carouselslot.slides[s].priceLabel[1] = data[0].carouselslot.roi ? p[1] : p[0];
+                 data[0].carouselslot.slides[s].priceLabel[1] = data[0].carouselslot.spec.roi ? p[1] : p[0];
                  }
 
                  // after event text / save
 
-                 for (x=2; x < 4; x++) { var a=data[0].carouselslot.slides[s].priceLabel[x].split(';'); if(a.length> 1) {
-                     data[0].carouselslot.slides[s].priceLabel[x] = data[0].carouselslot.roi ? (a[0].split('£')[0] + a[1]) : a[0];
+                 for (x=2; x < 5; x++) { var a=data[0].carouselslot.slides[s].priceLabel[x].split(';'); if(a.length> 1) {
+                     data[0].carouselslot.slides[s].priceLabel[x] = data[0].carouselslot.spec.roi ? (a[0].split('£')[0] + a[1]) : a[0];
                      }
 
                      }
@@ -107,16 +116,16 @@ function ampGetQueryValue(variable) {
 
                      var pp = Number(data[0].carouselslot.slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
 
-                     if(data[0].carouselslot.roi) {
-                     data[0].carouselslot.slides[s].priceLabel[4] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
+                     if(data[0].carouselslot.spec.roi) {
+                     data[0].carouselslot.slides[s].priceLabel[7] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
                      } else {
-                     data[0].carouselslot.slides[s].priceLabel[4] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
+                     data[0].carouselslot.slides[s].priceLabel[7] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
                      }
 
                      // build desktop finance details
 
-                     if(data[0].carouselslot.slides[s].priceLabel && data[0].carouselslot.slides[s].priceLabel[4]) {
-                     data[0].carouselslot.slides[s].financeArray = data[0].carouselslot.slides[s].priceLabel[4].split(' a month ');
+                     if(data[0].carouselslot.slides[s].priceLabel && data[0].carouselslot.slides[s].priceLabel[7]) {
+                     data[0].carouselslot.slides[s].financeArray = data[0].carouselslot.slides[s].priceLabel[7].split(' a month ');
                      data[0].carouselslot.slides[s].financeArray.push('a month');
                      } 
 

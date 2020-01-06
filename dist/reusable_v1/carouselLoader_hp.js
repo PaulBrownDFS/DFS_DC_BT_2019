@@ -379,15 +379,15 @@ var contentTree = amp.inlineContent(data)[0];
           var p = contentTree.slides[s].priceLabel[1].split(';');
 
           if (p.length > 1) {
-            contentTree.slides[s].priceLabel[1] = contentTree.spec.roiPrices ? p[1] : p[0];
+            contentTree.slides[s].priceLabel[1] = contentTree.spec.roi ? p[1] : p[0];
           }
 
           // after event text / save
 
-          for (x = 2; x < 4; x++) {
+          for (x = 2; x < 5; x++) {
             var a = contentTree.slides[s].priceLabel[x].split(';');
             if (a.length > 1) {
-              contentTree.slides[s].priceLabel[x] = contentTree.spec.roiPrices ? (a[0].split('£')[0] + a[1]) : a[0];
+              contentTree.slides[s].priceLabel[x] = contentTree.spec.roi ? (a[0].split('£')[0] + a[1]) : a[0];
             }
 
           }
@@ -396,16 +396,16 @@ var contentTree = amp.inlineContent(data)[0];
 
           var pp = Number(contentTree.slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
 
-          if (contentTree.spec.roiPrices) {
-            contentTree.slides[s].priceLabel[4] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
+          if (contentTree.spec.roi) {
+            contentTree.slides[s].priceLabel[7] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
           } else {
-            contentTree.slides[s].priceLabel[4] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
+            contentTree.slides[s].priceLabel[7] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
           }
 
           // build desktop finance details
 
-          if (contentTree.slides[s].priceLabel && contentTree.slides[s].priceLabel[4]) {
-            contentTree.slides[s].financeArray = contentTree.slides[s].priceLabel[4].split(' a month ');
+          if (contentTree.slides[s].priceLabel && contentTree.slides[s].priceLabel[7]) {
+            contentTree.slides[s].financeArray = contentTree.slides[s].priceLabel[7].split(' a month ');
             contentTree.slides[s].financeArray.push('a month');
           }
 

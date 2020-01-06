@@ -18,8 +18,8 @@
 </head>
 <body>
 <!-- New DC Carousel PB -->
-<div style="margin-top:15px;" class="js_banner_wrap" data-slotid="c9363fde-aaa0-4b8f-850b-b1ce0005c732" data-roi="false"
-    data-maxslides="4"></div>
+<div style="margin-top:15px;" class="js_banner_wrap" data-slotid="eea5fda2-75d8-41ca-b4bb-25cf134fc4d6" data-roi="false" data-maxslides="4"></div>
+<!-- <div style="margin-top:15px;" class="js_banner_wrap" data-slotid="c9363fde-aaa0-4b8f-850b-b1ce0005c732" data-roi="false" data-maxslides="4"></div> -->
 <!-- <div style="margin-top:15px;" class="js_banner_wrap" data-slotid="89a3f14d-4b0a-4345-8ede-28c17e300175"
         data-roi="true" data-maxslides="4"></div> -->
 <!-- New DC Carousel PB -->
@@ -38,8 +38,8 @@ var dfs = {};
 }
 
 dfs.HPSlider = {
-    maxSlides: $('.js_banner_wrap').data('maxslides') || 4,
-    slotID: $('.js_banner_wrap').data('slotid')
+slotID: $('.js_banner_wrap').data('slotid'),
+maxSlides: $('.js_banner_wrap').data('maxslides') || 4
 }
 
 function ampGetQueryValue(variable) {
@@ -51,10 +51,13 @@ function ampGetQueryValue(variable) {
                 return decodeURIComponent(pair[1]);
             }
         }
-          // no api string provided in url so lets make a default
-          if(variable !== 'roi'){
-            return 'w59a4sqnbu301ot4nys8p4qo9-gvzrfgnzc-'+ new Date().getTime() +'.staging.bigcontent.io';
-          }
+       
+         // no api string provided in url so lets make a default
+         if(variable != 'roi'){
+         return 'w59a4sqnbu301ot4nys8p4qo9-gvzrfgnzc-'+ new Date().getTime() +'.staging.bigcontent.io';
+         }
+        
+
     }
 
     Handlebars.partials = AmpCa.templates;
@@ -82,21 +85,20 @@ function ampGetQueryValue(variable) {
               data[0].testDate = "";
             }
 
-            data[0].spec = {"testDate" : data[0].testDate};
+            data[0].carouselslot.spec = {};
             var isROIparam = window.ampGetQueryValue('roi');
 
-            if(isROIparam){
-            data[0].carouselslot.roi = true
-            data[0].spec .roiPrices = true;
-
+            if(isROIparam){ 
+                data[0].carouselslot.spec.roi = true;
+            
             } else {
-            data[0].carouselslot.roi = $('.js_banner_wrap').data('roi');
-            data[0].spec .roiPrices = $('.js_banner_wrap').data('roi');
+                data[0].carouselslot.spec.roi = $('.js_banner_wrap').data('roi');
             }
 
-             if(data[0].carouselslot.slides.length > dfs.HPSlider.maxSlides) {
-             data[0].carouselslot.slides.length = dfs.HPSlider.maxSlides;
-             }
+            // set slide Number to MaxSlides value
+            if(data[0].carouselslot.slides.length > dfs.HPSlider.maxSlides) {
+                data[0].carouselslot.slides.length = dfs.HPSlider.maxSlides;
+            }
 
             // setup  pricing labels for each slide
             for(s=0; s < data[0].carouselslot.slides.length; s++){
@@ -109,13 +111,13 @@ function ampGetQueryValue(variable) {
                  var p = data[0].carouselslot.slides[s].priceLabel[1].split(';');
 
                  if(p.length > 1) {
-                 data[0].carouselslot.slides[s].priceLabel[1] = data[0].carouselslot.roi ? p[1] : p[0];
+                 data[0].carouselslot.slides[s].priceLabel[1] = data[0].carouselslot.spec.roi ? p[1] : p[0];
                  }
 
                  // after event text / save
 
-                 for (x=2; x < 4; x++) { var a=data[0].carouselslot.slides[s].priceLabel[x].split(';'); if(a.length> 1) {
-                     data[0].carouselslot.slides[s].priceLabel[x] = data[0].carouselslot.roi ? (a[0].split('£')[0] + a[1]) : a[0];
+                 for (x=2; x < 5; x++) { var a=data[0].carouselslot.slides[s].priceLabel[x].split(';'); if(a.length> 1) {
+                     data[0].carouselslot.slides[s].priceLabel[x] = data[0].carouselslot.spec.roi ? (a[0].split('£')[0] + a[1]) : a[0];
                      }
 
                      }
@@ -124,16 +126,16 @@ function ampGetQueryValue(variable) {
 
                      var pp = Number(data[0].carouselslot.slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
 
-                     if(data[0].carouselslot.roi) {
-                     data[0].carouselslot.slides[s].priceLabel[4] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
+                     if(data[0].carouselslot.spec.roi) {
+                     data[0].carouselslot.slides[s].priceLabel[7] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
                      } else {
-                     data[0].carouselslot.slides[s].priceLabel[4] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
+                     data[0].carouselslot.slides[s].priceLabel[7] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
                      }
 
                      // build desktop finance details
 
-                     if(data[0].carouselslot.slides[s].priceLabel && data[0].carouselslot.slides[s].priceLabel[4]) {
-                     data[0].carouselslot.slides[s].financeArray = data[0].carouselslot.slides[s].priceLabel[4].split(' a month ');
+                     if(data[0].carouselslot.slides[s].priceLabel && data[0].carouselslot.slides[s].priceLabel[7]) {
+                     data[0].carouselslot.slides[s].financeArray = data[0].carouselslot.slides[s].priceLabel[7].split(' a month ');
                      data[0].carouselslot.slides[s].financeArray.push('a month');
                      } 
 

@@ -79,37 +79,40 @@
             </div>
             
             <div class="productDetail _mobile_ {{priceLabelStyle}}">
-              <h4 class="product_title">{{{_title}}}</h4>
-              <h5 class="offer_price">{{priceLabel.[0]}} {{priceLabel.[1]}}</h5>
-              <p class="additional_pricing_details">{{priceLabel.[2]}} <span>{{priceLabel.[3]}}</span> {{priceLabel.[4]}}</p>
-              <div class="carousel_cardlist_button">
-                <a href="{{shopButtonUrl}}">
-                  <p style="color:#000;border: 2px solid #000">{{shopButtonText}}</p>
-                </a>
-              </div>
-            </div>
-            
-            <div class="productDetail _label_ {{priceLabelStyle}}">
-              <div class="label_left">
-                <h5 class="offer_price">{{priceLabel.[0]}}<span>{{priceLabel.[1]}}</span>{{priceLabel.[3]}}</h5>
-              </div>
-            
-              <div class="label_middle ">
-                <h4 class="product_title">{{{_title}}} <span>{{priceLabel.[2]}}</span></h4>
-              </div>
-            
-              <div class="label_right_finance">
-                <p class="additional_pricing_details">
-                  <span>{{financeArray.[0]}}</span>{{financeArray.[2]}}<span></span>{{financeArray.[1]}}</p>
-              </div>
-            
-              {{#if priceLabel.[5]}}
-              <div class="available_colours">
-                <img src="https://images.dfs.co.uk/i/dfs/{{priceLabel.[5]}}/colour_swatches?qlt=100" alt="{{priceLabel.[5]}}">
-              </div>
-            </div>
-            {{/if}}
-            {{/iff}}
+                    <h4 class="product_title">{{{_title}}}</h4>
+                    <h5 class="offer_price">{{priceLabel.[0]}} {{priceLabel.[1]}}</h5>
+                    <p class="additional_pricing_details">{{#iff priceLabel.[4] "==" "none" }}{{priceLabel.[2]}} <span>{{priceLabel.[3]}}</span> {{priceLabel.[7]}}{{else}}{{priceLabel.[4]}} {{priceLabel.[2]}} <span>{{priceLabel.[3]}}</span>{{/iff}}</p>
+                    <div class="carousel_cardlist_button">
+                      <a href="{{shopButtonUrl}}">
+                        <p style="color:#000;border: 2px solid #000">{{shopButtonText}}</p>
+                      </a>
+                    </div>
+                </div>
+
+                <div class="productDetail _label_ {{priceLabelStyle}}">
+                  <div class="label_left">
+                    <h5 class="offer_price">{{priceLabel.[0]}}<span>{{priceLabel.[1]}}</span>{{priceLabel.[3]}}</h5>
+                  </div>
+                  
+                  <div class="label_middle ">
+                    {{#iff priceLabel.[4] "==" "none" }}
+                    <h4 class="product_title">{{{_title}}} <span>{{priceLabel.[2]}}</span></h4>
+                    {{else}}
+                    <h4 class="product_title">{{{_title}}} <span>{{priceLabel.[4]}}<br>{{priceLabel.[2]}}</span></h4>
+                    {{/iff}}
+                  </div>
+
+                  <div class="label_right_finance">
+                    <p class="additional_pricing_details"><span>{{financeArray.[0]}}</span>{{financeArray.[2]}}<span></span>{{financeArray.[1]}}</p>
+                  </div>
+                
+                  {{#if priceLabel.[5]}}
+                    <div class="available_colours">
+                      <img src="https://images.dfs.co.uk/i/dfs/{{priceLabel.[5]}}/colour_swatches?qlt=100" alt="{{priceLabel.[5]}}">
+                    </div>
+                    </div>
+                  {{/if}}
+             {{/iff}}
 
             {{#if EspotImage2.name }}
             <div class="linkableRoundel2">
@@ -209,6 +212,22 @@
     line-height: {{#if textBFontSize}}{{textBFontSize}}{{else}}18{{/if}}px !important;
     color:#{{#if textBColour}}{{ csv textBColour 'D'}}{{else}}000000{{/if}} !important;
   }
+
+  /* Price Label Top Offsets */
+ .slideIndex{{inc @index}}  h5.offer_price {
+    position: relative;
+    top: {{priceLabelTop.[0]}}px;
+}
+
+.slideIndex{{inc @index}} h4.product_title {
+    position: relative;
+     top: {{priceLabelTop.[1]}}px;
+}
+
+.slideIndex{{inc @index}}  p.additional_pricing_details {
+    position: relative;
+     top: {{priceLabelTop.[2]}}px;
+}
 
   @media (max-width: 1365px) {
 

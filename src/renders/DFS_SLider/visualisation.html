@@ -87,7 +87,7 @@ function getQueryVar(variable) {
 
                  // after event text / save
 
-                 for (x=2; x < 4; x++) { var a=data[0].slides[s].priceLabel[x].split(';'); if(a.length> 1) {
+                 for (x=2; x < 5; x++) { var a=data[0].slides[s].priceLabel[x].split(';'); if(a.length> 1) {
                      data[0].slides[s].priceLabel[x] = data[0].spec.roiPrices ? (a[0].split('£')[0] + a[1]) : a[0];
                      }
 
@@ -98,15 +98,15 @@ function getQueryVar(variable) {
                      var pp = Number(data[0].slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
 
                      if(data[0].spec.roiPrices) {
-                     data[0].slides[s].priceLabel[4] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
+                     data[0].slides[s].priceLabel[7] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
                      } else {
-                     data[0].slides[s].priceLabel[4] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
+                     data[0].slides[s].priceLabel[7] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
                      }
 
                      // build desktop finance details
 
-                     if(data[0].slides[s].priceLabel && data[0].slides[s].priceLabel[4]) {
-                     data[0].slides[s].financeArray = data[0].slides[s].priceLabel[4].split(' a month ');
+                     if(data[0].slides[s].priceLabel && data[0].slides[s].priceLabel[7]) {
+                     data[0].slides[s].financeArray = data[0].slides[s].priceLabel[7].split(' a month ');
                      data[0].slides[s].financeArray.push('a month');
                      } 
 

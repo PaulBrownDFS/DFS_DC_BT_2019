@@ -1,5 +1,31 @@
 // CARD LIST DEFAULTS
 
+/* Gallery Header */
+h2.galleryHeader {
+  text-align: center;
+  color: #000;
+  font-family: "HelveticaNeueW01-Thin", Arial, sans-serif;
+  line-height: 30px;
+  margin: 15px auto;
+}
+
+h2.galleryHeader span {
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+}
+
+h2.galleryHeader strong {
+  text-align: center;
+  color: #000;
+  line-height: 30px;
+  ;
+  font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
+  display: block;
+}
+
+section.CardList.Type_E .card.card7 {
+  display: none;
+}
+
 .js_cardList_wrap {
   margin: 0 auto;
 }

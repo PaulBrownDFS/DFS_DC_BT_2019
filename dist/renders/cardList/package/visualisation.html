@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>cardList</title>
 
-    <link rel="stylesheet" href="cardList.min.css" />
+    <link rel="stylesheet" href="../prod/mobile_prod.css" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=1">
     <style>
@@ -22,7 +22,7 @@
 
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="../cardList.min.js"></script>
+<script src="../cardList_mobile.min.js"></script>
 <script src="../../../reusable/all/dynamicContent.min.js"></script>
 
 
@@ -57,7 +57,7 @@
             //   data[0].productData = dfs.getXmlData(productSKU);
             // }
             _cardList = data[0];
-            var template = Handlebars.template(AmpCa.templates.cardList);
+            var template = Handlebars.template(AmpCa.templates.cardList_mobile);
             document.querySelectorAll(".js_cardList_wrap")[0].innerHTML = template(data[0]);
         },
         formatData: function (data) {

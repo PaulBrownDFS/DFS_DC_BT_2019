@@ -33,12 +33,9 @@
 </section>
 <style>
 {{#each cards}}
-
-@media (max-width: 1023px) {
   {{#if ../cardListCssId}}#{{../cardListCssId}}{{/if}}.CardList .card{{math @index "+" 1}} .cardlistCopy h2 {
     font-size: {{#if copyFontSize}}{{math copyFontSize "-" 8}}{{else}}28{{/if}}px !important;
   }
-}
 {{/each}}
 
 </style>

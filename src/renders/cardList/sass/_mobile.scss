@@ -87,4 +87,15 @@
     margin: 0 auto;
   }
 
+  /* 1023px width Card Image Size Fix */
+  .card img {
+    width: 100% !important;
+  }
+
+  /* Gallery  */
+  h2.galleryHeader {
+    width: 500px;
+    margin: 0 auto;
+    line-height: 40px;
+  }
 }

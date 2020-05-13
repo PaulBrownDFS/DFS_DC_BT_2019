@@ -1,0 +1,203 @@
+h2.galleryHeader,
+h2.galleryHeader strong {
+  color: #000;
+  line-height: 30px;
+  text-align: center
+}
+
+h2.galleryHeader {
+  font-size: 22px;
+  font-family: HelveticaNeueW01-Thin, Arial, sans-serif;
+  margin: 15px auto
+}
+
+h2.galleryHeader span,
+h2.galleryHeader strong {
+  font-family: HelveticaNeueW01-75Bold, Arial, sans-serif
+}
+
+h2.galleryHeader strong {
+  display: block
+}
+
+section.CardList.Type_E .card.card7 {
+  display: none
+}
+
+.js_cardList_wrap {
+  margin: 0 auto
+}
+
+section.CardList .card {
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+  position: relative
+}
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table
+}
+
+section.CardList.Type_A .card.card2,
+section.CardList.Type_A .card.card3,
+section.CardList.Type_A .card.card4,
+section.CardList.Type_A .card.card5,
+section.CardList.Type_A .card.card6,
+section.CardList.Type_B .card.card2,
+section.CardList.Type_B .card.card3,
+section.CardList.Type_C .card.card2,
+section.CardList.Type_D .card.card2 {
+  margin-left: 30px
+}
+
+section.CardList.Type_E .card.card2,
+section.CardList.Type_E .card.card3,
+section.CardList.Type_E .card.card4,
+section.CardList.Type_E .card.card5,
+section.CardList.Type_E .card.card6,
+section.CardList.Type_E .card.card7 {
+  margin-left: 20px
+}
+
+section.CardList .cardlistCopy h2 {
+  font-size: 20px;
+  text-align: center;
+  position: absolute;
+  font-weight: 100;
+  margin: 0
+}
+
+section.CardList .card.colorFFFFFF .cardlistCopy h2 {
+  font-family: HelveticaNeueW01-45Ligh, Arial, sans-serif
+}
+
+section.CardList .card.color000000 .cardlistCopy h2 {
+  font-family: HelveticaNeueW02-55Roma, Arial, sans-serif
+}
+
+.cardlist_button p {
+  font-size: 18px;
+  width: auto;
+  display: inline-block;
+  padding: 8px 25px;
+  text-align: center;
+  font-family: HelveticaNeueW01-75Bold, Arial, sans-serif;
+  font-weight: 900;
+  margin: 0 auto
+}
+
+.cardlistCopy,
+.cl_btn_wrapper {
+  position: absolute;
+  width: 100%
+}
+
+section.CardList .cardlist_button {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center
+}
+
+section.CardList .cl_btn_wrapper {
+  bottom: 40px
+}
+
+.cardlist_button.exclusiveBrands_btn,
+.cardlist_button.gallery_btn {
+  margin: 20px auto;
+  text-align: center
+}
+
+.card:hover p {
+  background: rgba(255, 255, 255, .5);
+  -webkit-transition: background-color 333ms linear;
+  transition: background-color 333ms linear
+}
+
+section.CardList .cardlistCopy {
+  bottom: 135px
+}
+
+section.CardList.Type_A .cardlistCopy,
+section.CardList.Type_B .cardlistCopy,
+section.CardList.Type_C .cardlistCopy {
+  bottom: 115px
+}
+
+section.CardList .cardlistCopy h2 {
+  width: 100%
+}
+
+section.CardList.Type_E .card {
+  float: left;
+  width: 151px;
+  height: 151px;
+  padding: 10px 0
+}
+
+.js_cardList_wrap {
+  width: 600px
+}
+
+section.CardList {
+  margin: 0 30px
+}
+
+section.CardList.Type_A .card.card3,
+section.CardList.Type_A .card.card5,
+section.CardList.Type_E .card.card4 {
+  margin-left: 0 !important
+}
+
+section.CardList.Type_A .card {
+  float: left;
+  width: 255px;
+  height: 259px;
+  padding: 15px 0
+}
+
+section.CardList.Type_B .card.card3 {
+  Display: none
+}
+
+section.CardList.Type_B .card {
+  float: left;
+  width: 255px;
+  height: 188px;
+  padding: 15px 0
+}
+
+section.CardList.Type_C .card {
+  float: left;
+  width: 540px;
+  height: 257px;
+  padding: 15px 0;
+  margin: 0 !important
+}
+
+section.CardList.Type_D .card {
+  float: left;
+  width: 540px;
+  height: 435px;
+  padding: 15px 0;
+  margin: 0 !important
+}
+
+section.CardList.Type_D .cl_btn_wrapper {
+  bottom: 30px
+}
+
+section.CardList.Type_D .cardlistCopy {
+  bottom: 121px
+}
+
+section.CardList.Type_E {
+  width: 493px;
+  margin: 0 auto
+}
+
+.card img {
+  width: 100% !important
+}

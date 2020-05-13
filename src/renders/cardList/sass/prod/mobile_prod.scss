@@ -4,6 +4,7 @@
 h2.galleryHeader {
   text-align: center;
   color: #000;
+  font-size: 22px;
   font-family: "HelveticaNeueW01-Thin", Arial, sans-serif;
   line-height: 30px;
   margin: 15px auto;
@@ -17,7 +18,6 @@ h2.galleryHeader strong {
   text-align: center;
   color: #000;
   line-height: 30px;
-  ;
   font-family: "HelveticaNeueW01-75Bold", Arial, sans-serif;
   display: block;
 }
@@ -123,6 +123,11 @@ section.CardList .cardlist_button {
 
 section.CardList .cl_btn_wrapper {
   bottom: 40px;
+}
+
+.cardlist_button.gallery_btn, .cardlist_button.exclusiveBrands_btn {
+  margin: 20px auto;
+  text-align: center;
 }
 
 .card:hover p {
@@ -270,7 +275,11 @@ section.CardList.Type_E {
   }
 
   section.CardList.Type_D .cardlistCopy {
-    bottom: 115px;
+    bottom: 121px;
+  }
+
+  section.CardList.Type_D .cl_btn_wrapper {
+    bottom: 30px
   }
 
   // TYPE E CARD LIST
@@ -283,12 +292,5 @@ section.CardList.Type_E {
   /* 1023px width Card Image Size Fix */
   .card img {
     width: 100% !important;
-  }
-
-  /* Gallery  */
-  h2.galleryHeader {
-    width: 500px;
-    margin: 0 auto;
-    line-height: 40px;
   }
 

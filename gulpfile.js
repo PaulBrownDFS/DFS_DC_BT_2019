@@ -436,7 +436,7 @@ gulp.task('copy-node-modules', function () {
     return gulp
         .src([
             'node_modules/cms-javascript-sdk/dist/cms-javascript-sdk.min.js',
-            'node_modules/handlebars/dist/handlebars.min.js',
+            //'node_modules/handlebars/dist/handlebars.min.js',
             'node_modules/showdown/dist/showdown.min.js',
             'node_modules/lory.js/dist/lory.min.js'
         ])

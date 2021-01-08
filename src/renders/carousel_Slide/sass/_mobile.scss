@@ -1,6 +1,13 @@
 @media (max-width: 1023px) {
   /* Mobile Css Styles*/
 
+  #hpCarousel button.owl-next {
+    left: 568px;
+  }
+  #hpCarousel  .owl-dots {
+    top: -22px;
+  }
+
   .js_banner_wrap .item {
     height: 462px;
   }

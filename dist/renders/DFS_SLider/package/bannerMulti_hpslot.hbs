@@ -1,15 +1,9 @@
 {{#with carouselslot}}
 <div class="carouselContainer">
     <div id="hpCarousel" class="carousel slide {{#iff slides.[0].carouselVersion "==" "Late2019" }}late2019{{/iff}}" data-ride="carousel" data-isroi="{{spec.roiPrices}}">
-      <!-- Indicators -->
-      <ol class="carousel-indicators">
-        {{#each slides}}
-          <li data-target="#hpCarousel" data-slide-to="{{@index}}" {{#if @first}} class="active"{{/if}}></li>
-        {{/each}}
-      </ol>
-
+     
       <!-- Wrapper for slides -->
-      <div class="carousel-inner">
+      <div class="carousel-inner owl-carousel">
         {{#each slides}}
           <div class="item {{#if @first}} active {{/if}} slideIndex{{inc @index}}" data-roi="{{../spec.roiPrices}}">
             <a href="{{productURL}}">
@@ -55,7 +49,7 @@
                         data-testdate="{{../../testDate}}">
                     <h6 class="cdHeader"><!-- DEFAULT HEADER TEXT--></h6>
                       <section class="timer {{#if hasCountdown}} showCountdown{{else}}hideCountdown{{/if}}">
-                        <img src="//dfs.a.bigcontent.io/v1/static/loading_please_wait?v30" alt="loading..">
+                        {{!-- <img src="//dfs.a.bigcontent.io/v1/static/loading_please_wait?v30" alt="loading.."> --}}
                       </section>
                     <h6 class="cdFooter"><!-- DEFAULT FOOTER TEXT--></h6>
                   </div>
@@ -152,15 +146,6 @@
         {{/each}}
       </div>
 
-      <!-- Left and right controls -->
-      <a class="left carousel-control" href="#hpCarousel" data-slide="prev">
-        <span></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="right carousel-control" href="#hpCarousel" data-slide="next">
-        <span></span>
-        <span class="sr-only">Next</span>                                                                       
-      </a>
     </div>
   </div>
   <style>

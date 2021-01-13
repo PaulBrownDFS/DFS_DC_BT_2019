@@ -177,6 +177,9 @@ dfs.updateElement = function () {
       autoplayHoverPause:true,
       items: 1
   });
+
+  console.log('Carousel Ready and Initiated : ' + PollElement);
+  clearInterval(PollElement);
     
     // start Countdowns
     dfs.countdownv2.init();

@@ -1,4 +1,4 @@
-// Owl Carousel 2 Dec 2020
+// Owl Carousel 2 Dec 2020 (note: this file should be minified in the dist folder for deployment, POST Build!.
 /**
  * Owl Carousel v2.3.4
  * Copyright 2013-2018 David Deutsch
@@ -289,9 +289,9 @@ dfs.updateElement = function () {
       nav:true,
       navText:['',''],
       dots:true,
-      animateOut: 'fadeOut',
       autoplay:true,
       autoplayTimeout:6000,
+      smartSpeed:1250,
       autoplayHoverPause:true,
       items: 1
   });

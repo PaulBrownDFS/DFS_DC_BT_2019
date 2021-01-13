@@ -171,9 +171,9 @@ dfs.updateElement = function () {
       nav:true,
       navText:['',''],
       dots:true,
-      animateOut: 'fadeOut',
       autoplay:true,
       autoplayTimeout:6000,
+      smartSpeed:1250,
       autoplayHoverPause:true,
       items: 1
   });

@@ -2,7 +2,7 @@
     <div id="hpCarousel" class="carousel slide {{#iff carouselVersion "==" "Late2019" }}late2019{{/iff}}" data-ride="carousel">
       
       <!-- Wrapper for slides -->
-      <div class="carousel-inner owl-carousel">
+      <div class="carousel-inner owl-carousel" id="HPCarousel2">
         {{#times 5}}
           <div class="item {{#if @first }}active{{/if}} slideIndex{{inc @index}}">
             <a href="{{productURL}}">

@@ -1,11 +1,12 @@
-// UAT1 Visual Loader
+// Mobile Visual Loader For Previews (NL translated countdowns) 
 if(!dfs) {
 var dfs = {};
 }
 
 dfs.HPSlider = {
-slotID: $('.js_banner_wrap').data('slotid'),
-template: $('.js_banner_wrap').data('template')
+    maxSlides: $('.js_banner_wrap').data('maxslides') || 4,
+    slotID: $('.js_banner_wrap').data('slotid'),
+    template: $('.js_banner_wrap').data('template')
 }
 
 function ampGetQueryValue(variable) {
@@ -17,13 +18,10 @@ function ampGetQueryValue(variable) {
                 return decodeURIComponent(pair[1]);
             }
         }
-       
-         // no api string provided in url so lets make a default
-         if(variable != 'roi'){
-         return 'w59a4sqnbu301ot4nys8p4qo9-gvzrfgnzc-'+ new Date().getTime() +'.staging.bigcontent.io';
-         }
-        
-
+          // no api string provided in url so lets make a default
+          if(variable !== 'roi'){
+            return 'w59a4sqnbu301ot4nys8p4qo9-gvzrfgnzc-'+ new Date().getTime() +'.staging.bigcontent.io';
+          }
     }
 
     Handlebars.partials = AmpCa.templates;
@@ -37,103 +35,98 @@ function ampGetQueryValue(variable) {
                                   + encodeURIComponent(JSON.stringify({"sys.iri":"http://content.cms.amplience.com/" + dfs.HPSlider.slotID}))
                                   + "&scope=tree&store=dfs&cacheBuster=" + cacheBuster,
 
-    callback: function (data) {
-      // data[0].renderTypes = renderTypes;
-      // get preview date
-      data[0].previewDate = ampGetQueryValue('api').match(/\d{13,}/);
-      if (data[0].previewDate) {
-        var this_timeStamp = data[0].previewDate[0];
-        var dateString = new Date(Number(this_timeStamp));
-        data[0].testDate = dateString.getDate() + '/' + (dateString.getMonth() + 1) + '/' +
-          dateString.getFullYear() + ' ' + dateString.getHours() + ':' + dateString.getMinutes() + ':' +
-          dateString.getSeconds();
-      } else {
-        data[0].testDate = "";
-      }
-
-      data[0].spec = {
-        "testDate": data[0].testDate
-      };
-      data[0].carouselslot.spec = {};
-      var isROIparam = window.ampGetQueryValue('roi');
-
-      if (isROIparam) {
-        data[0].carouselslot.spec.roi = true;
-
-      } else {
-        data[0].carouselslot.spec.roi = $('.js_banner_wrap').data('roi');
-      }
-
-      // setup  pricing labels for each slide
-      for (s = 0; s < data[0].carouselslot.slides.length; s++) {
-
-        // pricing Label
-        // locale changes
-
-        // Price
-        if (data[0].carouselslot.slides[s].priceLabel) {
-          var p = data[0].carouselslot.slides[s].priceLabel[1].split(';');
-
-          if (p.length > 1) {
-            data[0].carouselslot.slides[s].priceLabel[1] = data[0].carouselslot.spec.roi ? p[1] : p[0];
-          }
-
-          // after event text / save
-
-          for (x = 2; x < 5; x++) {
-            var a = data[0].carouselslot.slides[s].priceLabel[x].split(';');
-            if (a.length > 1) {
-              data[0].carouselslot.slides[s].priceLabel[x] = data[0].carouselslot.spec.roi ? (a[0].split('£')[0] + a[
-                1]) : a[0];
+        callback: function (data) {
+            // data[0].renderTypes = renderTypes;
+            // get preview date
+            data[0].previewDate = ampGetQueryValue('api').match(/\d{13,}/);
+            if(data[0].previewDate) {
+              var this_timeStamp = data[0].previewDate[0];
+              var dateString = new Date(Number(this_timeStamp));
+              data[0].testDate = dateString.getDate() + '/' + (dateString.getMonth() + 1) + '/' +
+              dateString.getFullYear() + ' ' + dateString.getHours() + ':' + dateString.getMinutes() + ':'
+              +dateString.getSeconds();
+            } else {
+              data[0].testDate = "";
             }
 
-          }
+            data[0].spec = {"testDate" : data[0].testDate};
+            data[0].carouselslot.spec = {};
+            var isROIparam = window.ampGetQueryValue('roi');
 
-          // create finance price
+            if(isROIparam){
+            data[0].carouselslot.spec.roi = true;
 
-          var pp = Number(data[0].carouselslot.slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
+            } else {
+            data[0].carouselslot.spec.roi = $('.js_banner_wrap').data('roi');
+            }
 
-          if (data[0].carouselslot.spec.roi) {
-            data[0].carouselslot.slides[s].priceLabel[7] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) +
-              ' a month for 3 years';
-          } else {
-            data[0].carouselslot.slides[s].priceLabel[7] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) +
-              ' a month for 4 years';
-          }
+             if(data[0].carouselslot.slides.length > dfs.HPSlider.maxSlides) {
+             data[0].carouselslot.slides.length = dfs.HPSlider.maxSlides;
+             }
 
-          // build desktop finance details
+            // setup  pricing labels for each slide
+            for(s=0; s < data[0].carouselslot.slides.length; s++){
+                 
+                 // pricing Label
+                 // locale changes
 
-          if (data[0].carouselslot.slides[s].priceLabel && data[0].carouselslot.slides[s].priceLabel[7]) {
-            data[0].carouselslot.slides[s].financeArray = data[0].carouselslot.slides[s].priceLabel[7].split(
-              ' a month ');
-            data[0].carouselslot.slides[s].financeArray.push('a month');
-          }
+                 // Price
+                 if(data[0].carouselslot.slides[s].priceLabel){
+                 var p = data[0].carouselslot.slides[s].priceLabel[1].split(';');
 
-          if (data[0].carouselslot.slides[s].priceLabel && data[0].carouselslot.slides[s].priceLabel[6]) {
-            data[0].carouselslot.slides[s].priceLabelTop = data[0].carouselslot.slides[s].priceLabel[6].split(
-            ';');
-          } else {
-            data[0].carouselslot.slides[s].priceLabelTop = ['0', '0', '0'];
-          }
+                 if(p.length > 1) {
+                 data[0].carouselslot.slides[s].priceLabel[1] = data[0].carouselslot.spec.roi ? p[1] : p[0];
+                 }
 
+                 // after event text / save
+
+                 for (x=2; x < 5; x++) { var a=data[0].carouselslot.slides[s].priceLabel[x].split(';'); if(a.length> 1) {
+                     data[0].carouselslot.slides[s].priceLabel[x] = data[0].carouselslot.spec.roi ? (a[0].split('£')[0] + a[1]) : a[0];
+                     }
+
+                     }
+
+                     // create finance price
+
+                     var pp = Number(data[0].carouselslot.slides[s].priceLabel[1].replace(/[^\d.-]/g, ''));
+
+                     if(data[0].carouselslot.spec.roi) {
+                     data[0].carouselslot.slides[s].priceLabel[7] = '€' + (pp / 36).toFixed(3).toString().slice(0, -1) + ' a month for 3 years';
+                     } else {
+                     data[0].carouselslot.slides[s].priceLabel[7] = '£' + (pp / 48).toFixed(3).toString().slice(0, -1) + ' a month for 4 years';
+                     }
+
+                     // build desktop finance details
+
+                     if(data[0].carouselslot.slides[s].priceLabel && data[0].carouselslot.slides[s].priceLabel[7]) {
+                     data[0].carouselslot.slides[s].financeArray = data[0].carouselslot.slides[s].priceLabel[7].split(' a month ');
+                     data[0].carouselslot.slides[s].financeArray.push('a month');
+                     } 
+
+                     if(data[0].carouselslot.slides[s].priceLabel && data[0].carouselslot.slides[s].priceLabel[6]) {
+                     data[0].carouselslot.slides[s].priceLabelTop = data[0].carouselslot.slides[s].priceLabel[6].split(';');
+                     } else {
+                     data[0].carouselslot.slides[s].priceLabelTop = ['0','0','0'];
+                     }
+
+                     }
+            }
+
+            console.log('dataSaved: to SLData');
+            SLData = data[0];
+            var template = Handlebars.template(AmpCa.templates[dfs.HPSlider.template]);
+            document.querySelectorAll(".js_banner_wrap")[0].innerHTML = template(data[0]);
+
+            // loryHelpers.initSliders(document.querySelectorAll(".js_slider"));
+            AmpCa.utils.postProcessing.exec('slider', {});
+
+        },
+        formatData: function (data) {
+            return amp.inlineContent(JSON.parse(data));
         }
-      }
+    });
 
-      console.log('dataSaved: to SLData');
-      SLData = data[0];
-      var template = Handlebars.template(AmpCa.templates[dfs.HPSlider.template]);
-      document.querySelectorAll(".js_banner_wrap")[0].innerHTML = template(data[0]);
-
-      // loryHelpers.initSliders(document.querySelectorAll(".js_slider"));
-      AmpCa.utils.postProcessing.exec('slider', {});
-
-    },
-    formatData: function (data) {
-      return amp.inlineContent(JSON.parse(data));
-    }
-  });
-
-    // Owl Carousel 2 Dec 2020
+// Owl Carousel 2 Dec 2020
 /**
  * Owl Carousel v2.3.4
  * Copyright 2013-2018 David Deutsch
@@ -261,7 +254,7 @@ dfs.countdownv2 = {
         var jdate = dfs.countdownv2.convertDate(deadline[index]);
         var timer = dfs.countdownv2.timeRemaining(jdate, testDate);
         if (startDays[index] >= timer.days) {
-          var timerHtml = "<p><span class=\"cdDays\">" + timer.days + "</span> Days</p><p><span class=\"cdHours\">" + timer.hours + "</span> Hours</p><p><span class=\"cdMinutes\">" + timer.minutes + "</span> Minutes</p><p><span class=\"seconds\">" + timer.seconds + "</span> Seconds</p><div class=\"clearfix\"></div>";
+          var timerHtml = "<p><span class=\"cdDays\">" + timer.days + "</span> Dagen</p><p><span class=\"cdHours\">" + timer.hours + "</span> Uren</p><p><span class=\"cdMinutes\">" + timer.minutes + "</span> Minuten</p><p><span class=\"seconds\">" + timer.seconds + "</span> Seconden</p><div class=\"clearfix\"></div>";
           if (timer.days < 0) {
             dfs.countdownv2.stopTimer(index);
             $(_this).css('display', 'none');
@@ -299,7 +292,7 @@ dfs.countdownv2 = {
 dfs.updateElement = function () {
   var test4Element = $('#hpCarousel');
   if (test4Element.length) {
-    //innit owl carousel 2 here
+    // init Owl Carousel 2 here
     var owl = $('#HPCarousel2').owlCarousel({
       loop:true,
       nav:true,
@@ -325,16 +318,13 @@ dfs.updateElement = function () {
     // start Countdowns
     dfs.countdownv2.init();
 
-    
-
-
   }
 }
 
 // start carousel if loaded..
 var PollElement = setInterval(dfs.updateElement, 250);
 
-// Additional Handlebars Helpers
+// Additional Handlbars Helpers
 
 Handlebars.registerHelper("math", function (lvalue, operator, rvalue, options) {
   lvalue = parseFloat(lvalue);

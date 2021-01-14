@@ -285,17 +285,27 @@ dfs.countdownv2 = {
 dfs.updateElement = function () {
   var test4Element = $('#hpCarousel');
   if (test4Element.length) {
-    $('.owl-carousel').owlCarousel({
+    var owl = $('#HPCarousel2').owlCarousel({
       loop:true,
       nav:true,
       navText:['',''],
       dots:true,
       autoplay:true,
       autoplayTimeout:6000,
-      smartSpeed:1250,
+      smartSpeed:750,
       autoplayHoverPause:true,
-      items: 1
+      items: 1,
+      onDragged: resetTimeOut
   });
+
+  function resetTimeOut(e) {
+    owl.trigger('stop.owl.autoplay');
+    owl.trigger('play.owl.autoplay');
+  }
+  owl.on('click', '.owl-dots, .owl-nav', function(e) {
+    resetTimeOut();
+  });
+  
     clearInterval(PollElement);
     console.log('Carousel Ready and Initiated : ' + PollElement);
     // start Countdowns

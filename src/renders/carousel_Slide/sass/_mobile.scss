@@ -1,9 +1,19 @@
 @media (max-width: 1023px) {
   /* Mobile Css Styles*/
+  #hpCarousel button.owl-prev {
+    background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_prev_no_dis_v2?w=50);
+    width: 50px;
+    height: 70px;
+    background-position: 0 -494px;
+}
 
   #hpCarousel button.owl-next {
-    left: 568px;
-  }
+    left: 550px;
+    width: 50px;
+    height: 70px;
+    background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_next_no_dis_v2?w=50);
+    background-position: 0 -494px;
+}
   #hpCarousel  .owl-dots {
     top: -22px;
   }
@@ -32,60 +42,6 @@
   .carouselContainer {
     width: 600px;
     margin: 0 auto;
-  }
-
-  .carousel-indicators {
-    bottom: 15px;
-    left: 50%;
-  }
-
-  .carousel-control.left,
-  .carousel-control.right {
-    width: 64px;
-    height: 104px;
-    overflow: hidden;
-    background-position: 0px 0px;
-    cursor: pointer;
-    top: 179px;
-  }
-
-  .carousel-control.left {
-    background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_prev_no_dis_v2);
-    left: -15px;
-  }
-
-  .carousel-control.right {
-    background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_next_no_dis_v2);
-    left: 555px;
-  }
-
-  .carousel-control {
-    filter: alpha(opacity=100);
-    opacity: 1;
-  }
-
-  .carousel-control.left:hover,
-  .carousel-control.right:hover {
-    background-position: 0px -104px;
-  }
-
-  .carousel-indicators .active {
-    width: 15px;
-    height: 15px;
-    margin: 0 10px;
-    background-color: #5c2d91;
-  }
-
-  .carousel-indicators li {
-    width: 15px;
-    height: 15px;
-    background-color: #FFF;
-    border-radius: 10px;
-    margin: 1px 10px 0px;
-  }
-
-  .carousel-indicators li:not(.active):hover {
-    background-color: #222;
   }
 
   .countdownContainer.HPcd_WS2Large .timer {

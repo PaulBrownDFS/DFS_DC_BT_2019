@@ -5,13 +5,13 @@
 #hpCarousel  button:focus { outline: 0; } 
 
 #hpCarousel button.owl-next {
-  background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_next_no_dis_v2?w=32) !important;
+  background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_next_no_dis_v2?w=32);
   left: 1334px;
   width: 32px;
   height: 52px;
   overflow: hidden;
   opacity: 0.5;
-  background-position: 0px -520px !important;
+  background-position: 0px -520px;
   z-index: 9999;
   top: calc(50% - 40px);
   position: absolute;
@@ -23,13 +23,13 @@
 }
 
 #hpCarousel button.owl-prev {
-  background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_prev_no_dis_v2?w=32) !important;
+  background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_prev_no_dis_v2?w=32);
   left: 0px;
   width: 32px;
   height: 52px;
   overflow: hidden;
   opacity: 0.5;
-  background-position: 0px -520px !important;
+  background-position: 0px -520px;
   z-index: 9999;
   top: calc(50% - 40px);
   position: absolute;

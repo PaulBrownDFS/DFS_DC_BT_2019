@@ -3,7 +3,7 @@
     <div id="hpCarousel" class="carousel slide {{#iff slides.[0].carouselVersion "==" "Late2019" }}late2019{{/iff}}" data-ride="carousel" data-isroi="{{spec.roi}}">
 
       <!-- Wrapper for slides -->
-      <div class="carousel-inner owl-carousel">
+      <div class="carousel-inner owl-carousel" id="HPCarousel2">
         {{#each slides}}
           <div class="item {{#if @first}} active {{/if}} slideIndex{{inc @index}}" data-roi="{{../spec.roi}}">
             <a href="{{productURL}}">

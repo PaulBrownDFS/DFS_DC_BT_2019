@@ -255,13 +255,13 @@
 }
 
 #hpCarousel button.owl-next {
-  background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_next_no_dis_v2?w=32) !important;
+  background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_next_no_dis_v2?w=32);
   left: 1334px;
   width: 32px;
   height: 52px;
   overflow: hidden;
   opacity: 0.5;
-  background-position: 0px -520px !important;
+  background-position: 0px -520px;
   z-index: 9999;
   top: calc(50% - 40px);
   position: absolute;
@@ -273,13 +273,13 @@
 }
 
 #hpCarousel button.owl-prev {
-  background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_prev_no_dis_v2?w=32) !important;
+  background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_prev_no_dis_v2?w=32);
   left: 0px;
   width: 32px;
   height: 52px;
   overflow: hidden;
   opacity: 0.5;
-  background-position: 0px -520px !important;
+  background-position: 0px -520px;
   z-index: 9999;
   top: calc(50% - 40px);
   position: absolute;
@@ -1355,8 +1355,18 @@ section.timer {
 
 @media (max-width: 1023px) {
   /* Mobile Css Styles*/
+  #hpCarousel button.owl-prev {
+    background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_prev_no_dis_v2?w=50);
+    width: 50px;
+    height: 70px;
+    background-position: 0 -494px;
+  }
   #hpCarousel button.owl-next {
-    left: 568px;
+    left: 550px;
+    width: 50px;
+    height: 70px;
+    background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_next_no_dis_v2?w=50);
+    background-position: 0 -494px;
   }
   #hpCarousel .owl-dots {
     top: -22px;

@@ -1,9 +1,20 @@
 
   /* Mobile Css Styles*/
 
+  #hpCarousel button.owl-prev {
+    background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_prev_no_dis_v2?w=50);
+    width: 50px;
+    height: 70px;
+    background-position: 0 -494px;
+}
+
   #hpCarousel button.owl-next {
-    left: 568px;
-  }
+    left: 550px;
+    width: 50px;
+    height: 70px;
+    background-image: url(//images.dfs.co.uk/i/dfs/carousel_nav_next_no_dis_v2?w=50);
+    background-position: 0 -494px;
+}
   #hpCarousel  .owl-dots {
     top: -22px;
   }

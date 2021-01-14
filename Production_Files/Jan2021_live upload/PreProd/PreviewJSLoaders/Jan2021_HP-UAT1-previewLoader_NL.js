@@ -1,4 +1,4 @@
-// UAT1 Visual Loader
+// Desktop Visual Loader For Previews (NL translated countdowns) 
 if(!dfs) {
 var dfs = {};
 }
@@ -261,7 +261,7 @@ dfs.countdownv2 = {
         var jdate = dfs.countdownv2.convertDate(deadline[index]);
         var timer = dfs.countdownv2.timeRemaining(jdate, testDate);
         if (startDays[index] >= timer.days) {
-          var timerHtml = "<p><span class=\"cdDays\">" + timer.days + "</span> Days</p><p><span class=\"cdHours\">" + timer.hours + "</span> Hours</p><p><span class=\"cdMinutes\">" + timer.minutes + "</span> Minutes</p><p><span class=\"seconds\">" + timer.seconds + "</span> Seconds</p><div class=\"clearfix\"></div>";
+          var timerHtml = "<p><span class=\"cdDays\">" + timer.days + "</span> Dagen</p><p><span class=\"cdHours\">" + timer.hours + "</span> Uren</p><p><span class=\"cdMinutes\">" + timer.minutes + "</span> Minuten</p><p><span class=\"seconds\">" + timer.seconds + "</span> Seconden</p><div class=\"clearfix\"></div>";
           if (timer.days < 0) {
             dfs.countdownv2.stopTimer(index);
             $(_this).css('display', 'none');
